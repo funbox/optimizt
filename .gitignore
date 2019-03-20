@@ -1,0 +1,72 @@
+# -- Node.js --
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Dependency directory
+/node_modules
+
+# Optional npm cache directory
+.npm
+
+
+# -- VSCode --
+/.vscode
+jsconfig.json
+
+
+# -- IDEA --
+/.idea
+
+## File-based project format:
+*.ipr
+*.iws
+*.iml
+
+
+# -- Vim --
+
+# swap
+[._]*.s[a-w][a-z]
+[._]s[a-w][a-z]
+
+# session
+Session.vim
+
+# temporary
+.netrwhist
+*~
+/tmp
+
+
+# -- Eclipse --
+*.swp
+
+
+# -- OS X --
+.DS_Store
+
+
+# -- Public --
+/public
+/public-sandbox
+
+
+# -- Tests --
+/test-reports
+/test-logs
+/gemini-*
+/screenshots
+
+
+# -- Sass --
+.sass-cache
+
+
+# -- ESLint --
+.eslintcache
+
+# -- Stylelint --
+.stylelintcache
