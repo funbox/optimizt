@@ -44,29 +44,8 @@ Session.vim
 # -- Eclipse --
 *.swp
 
-
 # -- OS X --
 .DS_Store
 
-
-# -- Public --
-/public
-/public-sandbox
-
-
-# -- Tests --
-/test-reports
-/test-logs
-/gemini-*
-/screenshots
-
-
-# -- Sass --
-.sass-cache
-
-
 # -- ESLint --
 .eslintcache
-
-# -- Stylelint --
-.stylelintcache
