@@ -1,0 +1,23 @@
+{
+  "name": "optimizt",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Image optimization tool",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint --cache ./",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "husky": {
+    "pre-commit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.js": ["eslint --fix --cache"]
+  },
+  "devDependencies": {
+    "@funboxteam/eslint-config": "4.14.0",
+    "eslint": "5.16.0",
+    "husky": "4.2.3",
+    "lint-staged": "10.0.8"
+  }
+}
