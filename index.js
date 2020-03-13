@@ -12,7 +12,7 @@ async function optimizt({ paths, webp, lossless }) {
   const pathsList = prepareFilePaths(paths);
 
   if (webp) {
-    await createWebp({ spinner, paths: pathsList });
+    await createWebp({ spinner, paths: pathsList, lossless });
   } else {
     await optimize({ spinner, paths: pathsList, lossless });
   }
