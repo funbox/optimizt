@@ -5,7 +5,7 @@
   "description": "Image optimization tool",
   "main": "index.js",
   "bin": {
-    "optimizt": "./index.js"
+    "optimizt": "./cli.js"
   },
   "scripts": {
     "lint": "eslint --cache ./",
@@ -26,11 +26,12 @@
     "lint-staged": "10.0.8"
   },
   "dependencies": {
+    "commander": "4.1.1",
     "glob": "7.1.6",
     "imagemin": "7.0.1",
     "imagemin-gifsicle": "7.0.0",
-    "imagemin-mozjpeg": "8.0.0",
-    "imagemin-optipng": "7.1.0",
+    "imagemin-guetzli": "2.0.0",
+    "imagemin-jpegoptim": "6.0.0",
     "imagemin-pngquant": "8.0.0",
     "imagemin-svgo": "7.1.0",
     "imagemin-webp": "5.1.0",
