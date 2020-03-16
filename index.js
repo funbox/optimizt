@@ -7,14 +7,16 @@ const createWebp = require('./lib/createWebp');
 const optimize = require('./lib/optimize');
 const prepareFilePaths = require('./lib/prepareFilePaths');
 
-async function optimizt({ paths, webp, lossless }) {
+async function optimizt({ paths, webp, lossless, verbose }) {
   const spinner = ora('Processing. Please wait...').start();
   const pathsList = prepareFilePaths(paths);
 
+  const params = { spinner, paths: pathsList, lossless, verbose };
+
   if (webp) {
-    await createWebp({ spinner, paths: pathsList, lossless });
+    await createWebp(params);
   } else {
-    await optimize({ spinner, paths: pathsList, lossless });
+    await optimize(params);
   }
 
   spinner.stop();
