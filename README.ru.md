@@ -22,16 +22,16 @@ npm i -g @funboxteam/optimizt
 - Synchronize files after execution
 - Open console for tool output
 
-![](readme_external-tools.png)
+![](docs/readme_external-tools.png)
 
 ### Использование
 
 После добавления утилиты вызов может производиться правой кнопкой при клике на директории или файле с изображением:
 
-![](readme_menu-item.png)
+![](docs/readme_menu-item.png)
 
 ### Горячие клавиши
 
 Для назначения горячих клавиш нужно перейти в _Preferences → Keymap → External Tools_.
 
-![](readme_keymap.png)
+![](docs/readme_keymap.png)
