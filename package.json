@@ -8,7 +8,7 @@
   },
   "scripts": {
     "lint": "eslint --cache ./",
-    "test": "mocha"
+    "test": "mocha tests"
   },
   "husky": {
     "pre-commit": "lint-staged"
