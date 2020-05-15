@@ -49,3 +49,6 @@ Session.vim
 
 # -- ESLint --
 .eslintcache
+
+
+/tests/result
