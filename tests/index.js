@@ -5,8 +5,9 @@ const path = require('path');
 const copyRecursive = require('./utils/copyRecursive');
 const removeRecursive = require('./utils/removeRecursive');
 
-const calcRatio = require('../lib/calcRatio');
 const optimizt = require('../');
+const calcRatio = require('../lib/calcRatio');
+const prepareFilePaths = require('../lib/prepareFilePaths');
 
 const testDir = path.join(process.cwd(), 'tests');
 const imagesDir = path.join(testDir, 'images');
@@ -32,6 +33,33 @@ function assertFileContainsSubstring(filename, string) {
 }
 
 describe('CLI', () => {
+  describe('Paths generation', () => {
+    it('Paths for optimized files are generated correctly', () => {
+      const filePaths = [
+        'tests/images/ball.jpg',
+        'tests/images/ball.png',
+        'tests/images/homer.gif',
+        'tests/images/SVG/fill-none.svg',
+        'tests/images/SVG/optimized.svg',
+        'tests/images/SVG/stroke-none.svg',
+      ];
+      const generatedFilePaths = prepareFilePaths([imagesDir], ['gif', 'jpeg', 'jpg', 'png', 'svg']);
+
+      assert.deepStrictEqual(filePaths, generatedFilePaths);
+    });
+
+    it('Paths for WebP creation are generated correctly', () => {
+      const filePaths = [
+        'tests/images/ball.jpg',
+        'tests/images/ball.png',
+        'tests/images/homer.gif',
+      ];
+      const generatedFilePaths = prepareFilePaths([imagesDir], ['gif', 'jpeg', 'jpg', 'png']);
+
+      assert.deepStrictEqual(filePaths, generatedFilePaths);
+    });
+  });
+
   describe('Optimization (lossy)', () => {
     before(async function () {
       removeRecursive(resultDir);
