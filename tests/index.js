@@ -12,9 +12,7 @@ const testDir = path.join(process.cwd(), 'tests');
 const imagesDir = path.join(testDir, 'images');
 const resultDir = path.join(testDir, 'result');
 
-let webp;
-
-function checkRatio(filename, minRatio) {
+function assertRatio(filename, minRatio) {
   const originalSize = fs.statSync(path.join(imagesDir, filename)).size;
   const resultSize = fs.statSync(path.join(resultDir, filename)).size;
 
@@ -23,7 +21,7 @@ function checkRatio(filename, minRatio) {
   }
 }
 
-function checkForString(filename, string) {
+function assertFileContainsSubstring(filename, string) {
   const isContains = fs.readFileSync(path.join(resultDir, filename))
     .toString()
     .includes(string);
@@ -34,10 +32,7 @@ function checkForString(filename, string) {
 }
 
 describe('CLI', () => {
-  describe('Paths building', () => {
-  });
-
-  describe('Optimization', () => {
+  describe('Optimization (lossy)', () => {
     before(async function () {
       removeRecursive(resultDir);
       copyRecursive(imagesDir, resultDir);
@@ -46,21 +41,25 @@ describe('CLI', () => {
       await optimizt({ paths: [resultDir], verbose: true });
     });
 
+    after(() => {
+      removeRecursive(resultDir);
+    });
+
     it('JPEG is optimized', () => {
-      checkRatio('ball.jpg', -53);
+      assertRatio('ball.jpg', -53);
     });
 
     it('PNG is optimized', () => {
-      checkRatio('ball.png', -77);
+      assertRatio('ball.png', -77);
     });
 
     it('GIF is optimized', () => {
-      checkRatio('homer.gif', -7);
+      assertRatio('homer.gif', -7);
     });
 
     it('SVG is optimized', () => {
-      checkRatio(path.join('SVG', 'fill-none.svg'), -2);
-      checkRatio(path.join('SVG', 'stroke-none.svg'), -79);
+      assertRatio(path.join('SVG', 'fill-none.svg'), -2);
+      assertRatio(path.join('SVG', 'stroke-none.svg'), -79);
     });
 
     it('Optimized version is not saved when ratio is less than 1%', () => {
@@ -70,10 +69,6 @@ describe('CLI', () => {
       if (!original.equals(result)) {
         assert.fail('File "optimized.svg" has been changed');
       }
-    });
-
-    after(() => {
-      removeRecursive(resultDir);
     });
   });
 
@@ -86,21 +81,25 @@ describe('CLI', () => {
       await optimizt({ paths: [resultDir], verbose: true, lossless: true });
     });
 
+    after(() => {
+      removeRecursive(resultDir);
+    });
+
     it('JPEG is optimized', () => {
-      checkRatio('ball.jpg', -46);
+      assertRatio('ball.jpg', -46);
     });
 
     it('PNG is optimized', () => {
-      checkRatio('ball.png', -77);
+      assertRatio('ball.png', -77);
     });
 
     it('GIF is optimized', () => {
-      checkRatio('homer.gif', -7);
+      assertRatio('homer.gif', -7);
     });
 
     it('SVG is optimized', () => {
-      checkRatio('SVG/fill-none.svg', -2);
-      checkRatio('SVG/stroke-none.svg', -79);
+      assertRatio('SVG/fill-none.svg', -2);
+      assertRatio('SVG/stroke-none.svg', -79);
     });
 
     it('Optimized version is not saved when ratio is less than 1%', () => {
@@ -110,10 +109,6 @@ describe('CLI', () => {
       if (!original.equals(result)) {
         assert.fail('File "optimized.svg" has been changed');
       }
-    });
-
-    after(() => {
-      removeRecursive(resultDir);
     });
   });
 
@@ -126,28 +121,30 @@ describe('CLI', () => {
       await optimizt({ paths: [resultDir], verbose: true });
     });
 
+    after(() => {
+      removeRecursive(resultDir);
+    });
+
     it('fill="none" is not removed', () => {
-      checkForString(
+      assertFileContainsSubstring(
         path.join('SVG', 'fill-none.svg'),
         '<path fill="none"',
       );
     });
 
     it('fill="none" is not removed', () => {
-      checkForString(
+      assertFileContainsSubstring(
         path.join('SVG', 'stroke-none.svg'),
         'stroke="none" d=',
       );
     });
-
-    after(() => {
-      removeRecursive(resultDir);
-    });
   });
 
-  describe('WebP creation', () => {
-    before(async function () {
-      webp = null;
+  describe('WebP creation (lossy)', () => {
+    let generatedWebp;
+
+    beforeEach(async function () {
+      generatedWebp = null;
 
       removeRecursive(resultDir);
       copyRecursive(imagesDir, resultDir);
@@ -156,15 +153,23 @@ describe('CLI', () => {
       await optimizt({ paths: [resultDir], verbose: true, webp: true });
     });
 
+    after(() => {
+      generatedWebp = null;
+      removeRecursive(resultDir);
+    });
+
     it('WebP is created', async () => {
       const webpPath = path.join(resultDir, 'ball.webp');
 
-      if (!fs.existsSync(webpPath)) assert.fail('File "ball.webp" has not been created');
+      if (!fs.existsSync(webpPath)) {
+        assert.fail('File "ball.webp" has not been created');
+      }
 
       const jpgSize = fs.statSync(path.join(imagesDir, 'ball.jpg')).size;
       const webpSize = fs.statSync(webpPath).size;
 
-      webp = fs.readFileSync(webpPath);
+      // Save generated WebP to check it for rewrite later
+      generatedWebp = fs.readFileSync(webpPath);
 
       if (calcRatio(jpgSize, webpSize) > -70) {
         assert.fail('Optimization ratio for "ball.webp" is less than -70%');
@@ -180,16 +185,9 @@ describe('CLI', () => {
     it('Existed WebP is not rewritten', () => {
       const webpPath = path.join(resultDir, 'ball.webp');
 
-      if (!fs.existsSync(webpPath)) assert.fail('File "ball.webp" has not been created');
-
-      if (webp && !fs.readFileSync(webpPath).equals(webp)) {
+      if (generatedWebp && !fs.readFileSync(webpPath).equals(generatedWebp)) {
         assert.fail('File "ball.webp" has been rewritten');
       }
-    });
-
-    after(() => {
-      webp = null;
-      removeRecursive(resultDir);
     });
   });
 
@@ -202,23 +200,23 @@ describe('CLI', () => {
       await optimizt({ paths: [resultDir], verbose: true, webp: true, lossless: true });
     });
 
+    after(() => {
+      removeRecursive(resultDir);
+    });
+
     it('WebP is created', async () => {
-      const webpPath = path.join(resultDir, 'ball.webp');
+      if (!fs.existsSync(path.join(resultDir, 'ball.webp'))) {
+        assert.fail('File "ball.webp" has not been created');
+      }
+    });
 
-      if (!fs.existsSync(webpPath)) assert.fail('File "ball.webp" has not been created');
-
+    it('WebP is optimized', async () => {
       const jpgSize = fs.statSync(path.join(imagesDir, 'ball.png')).size;
-      const webpSize = fs.statSync(webpPath).size;
-
-      webp = fs.readFileSync(webpPath);
+      const webpSize = fs.statSync(path.join(resultDir, 'ball.webp')).size;
 
       if (calcRatio(jpgSize, webpSize) > -42) {
         assert.fail('Optimization ratio for "ball.webp" is less than -42%');
       }
-    });
-
-    after(() => {
-      removeRecursive(resultDir);
     });
   });
 });
