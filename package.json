@@ -1,6 +1,6 @@
 {
   "name": "@funboxteam/optimizt",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Image optimization tool",
   "main": "index.js",
   "bin": {
@@ -36,5 +36,14 @@
     "imagemin-svgo": "7.1.0",
     "imagemin-webp": "5.1.0",
     "ora": "4.0.3"
-  }
+  },
+  "files": [
+    "CHANGELOG.md",
+    "cli.js",
+    "index.js",
+    "README.md",
+    "images/",
+    "lib/",
+    "svgo/"
+  ]
 }

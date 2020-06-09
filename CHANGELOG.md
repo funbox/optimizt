@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.0.1 (09.06.2020)
+
+We continue the glorious tradition of “Publish first, think later”.
+
+Removed useless files from the bundled package.
+
+
 ## 1.0.0 (18.05.2020)
 
 First major version!
