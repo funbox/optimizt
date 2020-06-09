@@ -78,7 +78,7 @@ describe('CLI', () => {
     });
 
     it('PNG is optimized', () => {
-      assertRatio('ball.png', -77);
+      assertRatio('ball.png', -76);
     });
 
     it('GIF is optimized', () => {
@@ -118,7 +118,7 @@ describe('CLI', () => {
     });
 
     it('PNG is optimized', () => {
-      assertRatio('ball.png', -77);
+      assertRatio('ball.png', -76);
     });
 
     it('GIF is optimized', () => {
