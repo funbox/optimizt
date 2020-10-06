@@ -1,15 +1,43 @@
 {
   "name": "@funboxteam/optimizt",
   "version": "1.0.1",
-  "description": "Image optimization tool",
+  "description": "CLI image optimization tool",
   "main": "index.js",
   "bin": {
     "optimizt": "./cli.js"
   },
+  "files": [
+    "CHANGELOG.md",
+    "cli.js",
+    "index.js",
+    "README.md",
+    "images/",
+    "lib/",
+    "svgo/"
+  ],
   "scripts": {
     "lint-src": "eslint --cache --config .eslintrc.js --ignore-pattern 'tests/*' ./",
     "lint-tests": "eslint --config tests/.eslintrc.js --cache tests/",
     "test": "mocha tests"
+  },
+  "dependencies": {
+    "commander": "4.1.1",
+    "fast-glob": "3.2.2",
+    "imagemin": "7.0.1",
+    "imagemin-gifsicle": "7.0.0",
+    "imagemin-guetzli": "2.0.0",
+    "imagemin-jpegoptim": "6.0.0",
+    "imagemin-pngquant": "8.0.0",
+    "imagemin-svgo": "7.1.0",
+    "imagemin-webp": "5.1.0",
+    "ora": "4.0.3"
+  },
+  "devDependencies": {
+    "@funboxteam/eslint-config": "5.1.0",
+    "eslint": "5.16.0",
+    "husky": "4.2.3",
+    "lint-staged": "10.0.8",
+    "mocha": "7.1.1"
   },
   "husky": {
     "hooks": {
@@ -26,33 +54,5 @@
     "tests/**/*.js": [
       "eslint --fix --cache --config tests/.eslintrc.js"
     ]
-  },
-  "devDependencies": {
-    "@funboxteam/eslint-config": "5.1.0",
-    "eslint": "5.16.0",
-    "husky": "4.2.3",
-    "lint-staged": "10.0.8",
-    "mocha": "7.1.1"
-  },
-  "dependencies": {
-    "commander": "4.1.1",
-    "fast-glob": "3.2.2",
-    "imagemin": "7.0.1",
-    "imagemin-gifsicle": "7.0.0",
-    "imagemin-guetzli": "2.0.0",
-    "imagemin-jpegoptim": "6.0.0",
-    "imagemin-pngquant": "8.0.0",
-    "imagemin-svgo": "7.1.0",
-    "imagemin-webp": "5.1.0",
-    "ora": "4.0.3"
-  },
-  "files": [
-    "CHANGELOG.md",
-    "cli.js",
-    "index.js",
-    "README.md",
-    "images/",
-    "lib/",
-    "svgo/"
-  ]
+  }
 }

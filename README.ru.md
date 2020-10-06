@@ -1,61 +1,92 @@
 # @funboxteam/optimizt
 
-**optimizt** — это CLI-утилита для оптимизации и сжатия изображений, а так же для подготовки графики в формате WebP.
+<img align="right" width="192" height="192"
+     alt="Аватар Оптимизта: «OK» жест с картиной Моной Лизой между пальцами"
+     src="./images/logo.png">
 
-## Установка
+[![npm](https://img.shields.io/npm/v/@funboxteam/optimizt.svg)](https://www.npmjs.com/package/@funboxteam/optimizt)
 
+**Optimizt** — это консольная утилита, помогающая подготавливать картинки для фронтенда. 
+
+Она умеет сжимать PNG, JPEG, GIF и SVG с потерями и без, а также создавать WebP-версии для растровых изображений.
+
+## Мотивация
+
+Будучи фронтендерами мы должны помнить о картинках: сжимать PNG и JPEG, удалять лишние куски из SVG,
+создавать WebP для современных браузеров и так далее. Однажды мы устали использовать кучу разных утилит для всего этого
+и создали одну единственную, которая делает всё, что нам нужно.  
+
+## Использование
+
+Установить:
+ 
 ```sh
 npm i -g @funboxteam/optimizt
 ```
 
-## Доступные флаги
+Оптимизировать!
 
-- `--webp` — создание графики в формате WebP для указанных изображений;
-- `-l, --lossless` — режим сжатия «без потерь», для JPEG-изображений будет использоваться энкодер [Guetzli](https://github.com/google/guetzli), а при создании WebP будет активирован ключ [lossless](https://developers.google.com/speed/webp/docs/cwebp);
-- `-v, --verbose` — вывод дополнительной информации, например о пропущенных файлах;
-- `-V, --version` — отображение версии утилиты;
-- `-h, --help` — отображение информации по использованию утилиты.
+```sh
+optimizt path/to/picture.jpg
+```
 
-## Примеры работы с CLI
+## Флаги
+
+- `--webp` — создать WebP-версии для переданных изображений, а не сжимать их.  
+- `-l, --lossless` — оптимизировать без потерь, а не с потерями.  
+- `-v, --verbose` — выводить дополнительную информацию в ходе работы (например, проигнорированные файлы).
+- `-V, --version` — вывести версию изображения.
+- `-h, --help` — вывести справочную информацию.
+
+## Примеры
 
 ```bash
-# Оптимизация изображения
+# оптимизация одной картинки
 optimizt path/to/picture.jpg
 
-# Оптимизация изображений в указанной директории (рекурсивно)
-optimizt path/to/directory
+# оптимизация нескольких изображений без потерь без потерь
+optimizt --lossless path/to/picture.jpg path/to/another/picture.png
 
-# Оптимизация списка изображений
-optimizt path/to/picture.jpg path/to/another/picture.png
+# рекурсивное создание WebP-версий для изображений в указанной директории
+optimizt --webp path/to/directory
 
-# Рекурсивная оптимизация файлов с нужным расширением из текущей директории
+# рекурсивная оптимизация JPEG в текущей директории
 optimizt `find . -type f -name '*.jpg'`
 ```
 
-## Использование через External Tools в WebStorm
+## Интеграции
 
-### Добавление инструмента
+### «External Tool» в WebStorm, PhpStorm и пр.
 
-Перейти в _Preferences → Tools → External Tools_ и добавить новый инструмент со следующими параметрами:
+#### Добавьте «External Tool»
 
-- Name: `Optimize Images`
-- Description: `Image optimization tool`
-- Program: `Путь до исполняемого файла`
-- Arguments: `$FilePath$`
+Откройте _Preferences → Tools → External Tools_ и добавьте новый инструмент со следующими настройками:
+
+- Program: путь до исполняемого файла (обычно просто `optimizt`)
+- Arguments: необходимые вам, но не забудьте использовать `$FilePath$` чтобы передать Оптимизту путь до выбранной директории или файла
 - Working Directory: `$ContentRoot$`
-- Synchronize files after execution
-- Open console for tool output
+- Synchronize files after execution: ✔️
+
+Остальные настройки на ваше усмотрение. Например:
 
 ![](images/ws_external-tools.png)
 
-### Использование
+Как видно на скриншоте выше, вы можете добавить несколько «внешних инструментов» с разными настройками. 
 
-После добавления вызов утилиты может производиться правой кнопкой при клике на директории или файле с изображением:
+### Как использовать
+
+Вызовите контекстное меню на файле или директории и запустите необходимое:
 
 ![](images/ws_menu.png)
 
 ### Горячие клавиши
 
-Для назначения горячих клавиш нужно перейти в _Preferences → Keymap → External Tools_:
+Добавить горячие клавиши для конкретного инструмента можно в _Preferences → Keymap → External Tools_: 
 
 ![](images/ws_keymap.png)
+
+## Благодарности
+
+Клёвую картинку для репозитория нарисовал [Игорь Гарибальди](http://pandabanda.com/).
+
+[![Sponsored by FunBox](https://funbox.ru/badges/sponsored_by_funbox_centered.svg)](https://funbox.ru)

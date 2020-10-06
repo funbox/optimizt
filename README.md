@@ -1,19 +1,41 @@
 # @funboxteam/optimizt
 
-**optimizt** is a CLI tool for images compression and optimization. It also creates WebP version for PNG & JPEG images.
+<img align="right" width="192" height="192"
+     alt="Optimizt avatar: OK sign with Mona Lisa picture between the fingers"
+     src="./images/logo.png">
+
+[![npm](https://img.shields.io/npm/v/@funboxteam/optimizt.svg)](https://www.npmjs.com/package/@funboxteam/optimizt)
+
+**Optimizt** is a CLI tool that helps you prepare images during frontend development. 
+
+It can compress PNG, JPEG, GIF and SVG lossy and lossless and create WebP versions for raster images.
 
 [По-русски](./README.ru.md)
 
-## Installation
+## Rationale
 
+As frontend developers we have to care about pictures: compress PNG & JPEG, remove useless parts of SVG,
+create WebP for modern browsers, etc. One day we got tired of using a bunch of apps for that,
+and created one tool that does everything we want.  
+
+## Usage
+
+Install the tool:
+ 
 ```sh
 npm i -g @funboxteam/optimizt
 ```
 
-## Available options
+Optimize!
 
-- `--webp` — create WebP versions for the passed paths.
-- `-l, --lossless` — optimize lossless. [Guetzli](https://github.com/google/guetzli) encoder will be used for JPEG. [`lossless`](https://developers.google.com/speed/webp/docs/cwebp) flag will be enabled for WebP creation.
+```sh
+optimizt path/to/picture.jpg
+```
+
+## Command line flags
+
+- `--webp` — create WebP versions for the passed paths instead of compressing them.  
+- `-l, --lossless` — optimize losslessly instead of lossily.  
 - `-v, --verbose` — show additional info, e.g. skipped files.
 - `-V, --version` — show tool version.
 - `-h, --help` — show help.
@@ -24,31 +46,34 @@ npm i -g @funboxteam/optimizt
 # one image optimization
 optimizt path/to/picture.jpg
 
-# list of images optimization
-optimizt path/to/picture.jpg path/to/another/picture.png
+# list of images optimization losslessly
+optimizt --lossless path/to/picture.jpg path/to/another/picture.png
 
-# recursive images optimization in the passed directory
-optimizt path/to/directory
+# recursive WebP creation in the passed directory
+optimizt --webp path/to/directory
 
 # recursive JPEG optimization in the current directory
 optimizt `find . -type f -name '*.jpg'`
 ```
 
-## Use it as External Tool in WebStorm
+## Integrations
 
-### How to add
+### External Tool in WebStorm, PhpStorm, etc
 
-Open _Preferences → Tools → External Tools_ and add the new toll with these options:
+#### Add an External Tool
 
-- Name: `Optimize Images`
-- Description: `Image optimization tool`
-- Program: `path to the exec file`
-- Arguments: `$FilePath$`
+Open _Preferences → Tools → External Tools_ and add a new tool with these options:
+
+- Program: path to the exec file (usually simply `optimizt`)
+- Arguments: desired ones, but use `$FilePath$` to pass Optimizt the path of the selected file or directory
 - Working Directory: `$ContentRoot$`
-- Synchronize files after execution
-- Open console for tool output
+- Synchronize files after execution: ✔️
+
+Set other options at your discretion. For example:
 
 ![](images/ws_external-tools.png)
+
+As you see on the screenshot above, you may add several “external tools” with the different options passed. 
 
 ### How to use
 
@@ -56,8 +81,14 @@ Run the tool through the context menu on a file or directory:
 
 ![](images/ws_menu.png)
 
-### Hotkeys
+### Shortcuts
 
-To add hotkeys for the tool go to _Preferences → Keymap → External Tools_:
+To add shortcuts for the added tool go to _Preferences → Keymap → External Tools_:
 
 ![](images/ws_keymap.png)
+
+## Credits
+
+Cute picture for the project was made by [Igor Garybaldi](http://pandabanda.com/).
+
+[![Sponsored by FunBox](https://funbox.ru/badges/sponsored_by_funbox_centered.svg)](https://funbox.ru)
