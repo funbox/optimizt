@@ -11,10 +11,15 @@
     "test": "mocha tests"
   },
   "husky": {
-    "pre-commit": "lint-staged"
+    "hooks": {
+      "pre-commit": "lint-staged -q"
+    }
   },
   "lint-staged": {
-    "*.js": [
+    "!(tests)/**/*.js": [
+      "eslint --fix --cache"
+    ],
+    "./*.js": [
       "eslint --fix --cache"
     ]
   },
