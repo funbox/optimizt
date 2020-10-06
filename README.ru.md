@@ -25,7 +25,7 @@ optimizt path/to/picture.jpg
 # Оптимизация изображений в указанной директории (рекурсивно)
 optimizt path/to/directory
 
-# Оптимизаця списка изображений
+# Оптимизация списка изображений
 optimizt path/to/picture.jpg path/to/another/picture.png
 
 # Рекурсивная оптимизация файлов с нужным расширением из текущей директории
@@ -56,6 +56,6 @@ optimizt `find . -type f -name '*.jpg'`
 
 ### Горячие клавиши
 
-Для назначения горячих клавиш нужно перейти в _Preferences → Keymap → External Tools_.
+Для назначения горячих клавиш нужно перейти в _Preferences → Keymap → External Tools_:
 
 ![](images/ws_keymap.png)
