@@ -9,9 +9,9 @@ module.exports = function copyRecursive(from, to) {
     const toPath = path.join(to, item.name);
 
     if (item.isDirectory()) {
-      copyRecursive(fromPath, toPath)
+      copyRecursive(fromPath, toPath);
     } else {
-      fs.copyFileSync(fromPath, toPath)
+      fs.copyFileSync(fromPath, toPath);
     }
   });
 };

@@ -61,7 +61,7 @@ describe('CLI', () => {
   });
 
   describe('Optimization (lossy)', () => {
-    before(async function () {
+    before(async function prepare() {
       removeRecursive(resultDir);
       copyRecursive(imagesDir, resultDir);
 
@@ -101,7 +101,7 @@ describe('CLI', () => {
   });
 
   describe('Optimization (lossless)', () => {
-    before(async function () {
+    before(async function prepare() {
       removeRecursive(resultDir);
       copyRecursive(imagesDir, resultDir);
 
@@ -141,7 +141,7 @@ describe('CLI', () => {
   });
 
   describe('SVG optimization features', () => {
-    before(async function () {
+    before(async function prepare() {
       removeRecursive(resultDir);
       copyRecursive(imagesDir, resultDir);
 
@@ -171,7 +171,7 @@ describe('CLI', () => {
   describe('WebP creation (lossy)', () => {
     let generatedWebp;
 
-    beforeEach(async function () {
+    beforeEach(async function prepare() {
       generatedWebp = null;
 
       removeRecursive(resultDir);
@@ -220,7 +220,7 @@ describe('CLI', () => {
   });
 
   describe('WebP creation (lossless)', () => {
-    before(async function () {
+    before(async function prepare() {
       removeRecursive(resultDir);
       copyRecursive(imagesDir, resultDir);
 
