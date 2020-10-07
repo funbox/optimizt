@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.0.0 (07.10.2020)
+
+Prepared the package for publishing on GitHub.
+
+Updated some deps, fixed small linter errors, added LICENSE.
+
 ## 1.0.1 (09.06.2020)
 
 We continue the glorious tradition of “Publish first, think later”.

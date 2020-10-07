@@ -1,6 +1,6 @@
 {
   "name": "@funboxteam/optimizt",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "description": "CLI image optimization tool",
   "license": "MIT",
   "author": "Andrey Ivanov (https://github.com/343dev)",
@@ -13,6 +13,7 @@
     "optimizt": "./cli.js"
   },
   "files": [
+    "MIGRATION.md",
     "cli.js",
     "index.js",
     "images/",
