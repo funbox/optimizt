@@ -7,10 +7,8 @@
     "optimizt": "./cli.js"
   },
   "files": [
-    "CHANGELOG.md",
     "cli.js",
     "index.js",
-    "README.md",
     "images/",
     "lib/",
     "svgo/"
