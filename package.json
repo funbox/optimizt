@@ -2,6 +2,12 @@
   "name": "@funboxteam/optimizt",
   "version": "1.0.1",
   "description": "CLI image optimization tool",
+  "license": "MIT",
+  "author": "Andrey Ivanov (https://github.com/343dev)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/funbox/optimizt"
+  },
   "main": "index.js",
   "bin": {
     "optimizt": "./cli.js"
@@ -13,8 +19,6 @@
     "lib/",
     "svgo/"
   ],
-  "license": "MIT",
-  "author": "Andrey Ivanov (https://github.com/343dev)",
   "scripts": {
     "lint-src": "eslint --cache --config .eslintrc.js --ignore-pattern 'tests/*' ./",
     "lint-tests": "eslint --config tests/.eslintrc.js --cache tests/",
