@@ -77,7 +77,7 @@ optimizt `find . -type f -name '*.jpg'`
 
 Вызовите контекстное меню на файле или директории и запустите необходимое:
 
-![](images/ws_menu.png)
+<img src="images/ws_menu.png" width="55%">
 
 ### Горячие клавиши
 
