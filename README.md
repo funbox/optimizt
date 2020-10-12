@@ -79,7 +79,7 @@ As you see on the screenshot above, you may add several “external tools” wit
 
 Run the tool through the context menu on a file or directory: 
 
-![](images/ws_menu.png)
+<img src="images/ws_menu.png" width="55%">
 
 ### Shortcuts
 

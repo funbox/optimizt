@@ -1,10 +1,20 @@
 # Changelog
 
+## 2.0.1 (12.10.2020)
+
+Removed unused logic from [formatBytes](lib/formatBytes.js).
+
+Optimized [prepareFilePaths](lib/prepareFilePaths.js) function.
+
+Updated images used in README.
+
+
 ## 2.0.0 (07.10.2020)
 
 Prepared the package for publishing on GitHub.
 
 Updated some deps, fixed small linter errors, added LICENSE.
+
 
 ## 1.0.1 (09.06.2020)
 
