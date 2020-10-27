@@ -60,6 +60,8 @@ optimizt `find . -type f -name '*.jpg'`
 
 ### External Tool in WebStorm, PhpStorm, etc
 
+<details>
+
 #### Add an External Tool
 
 Open _Preferences → Tools → External Tools_ and add a new tool with these options:
@@ -75,17 +77,111 @@ Set other options at your discretion. For example:
 
 As you see on the screenshot above, you may add several “external tools” with the different options passed. 
 
-### How to use
+#### How to use
 
 Run the tool through the context menu on a file or directory: 
 
 <img src="images/ws_menu.png" width="55%">
 
-### Shortcuts
+#### Shortcuts
 
 To add shortcuts for the added tool go to _Preferences → Keymap → External Tools_:
 
 ![](images/ws_keymap.png)
+
+</details>
+
+### Sublime Text 3
+
+<details>
+
+You’ll find the user settings directory in one of the following paths:
+
+- macOS: `~/Library/Application Support/Sublime Text 3/Packages/User`
+- Linux: `~/.config/sublime-text-3/Packages/User`
+- Windows: `%APPDATA%\Sublime Text 3\Packages\User`
+
+#### Add plugin
+
+Inside the settings directory create a file `optimizt.py` with the following content:
+
+```python
+import os
+import sublime
+import sublime_plugin
+
+optimizt = "~/.nodenv/shims/optimizt"
+
+class OptimiztCommand(sublime_plugin.WindowCommand):
+  def run(self, paths=[], options=""):
+    if len(paths) < 1:
+      return
+
+    safe_paths = ["\"" + i + "\"" for i in paths]
+    shell_cmd = optimizt + " " + options + " " + " ".join(safe_paths)
+    cwd = os.path.dirname(paths[0])
+
+    self.window.run_command("exec", {
+      "shell_cmd": shell_cmd,
+      "working_dir": cwd
+    })
+```
+
+Specify path to executable inside `optimizt` variable, this path can be obtained by running `command -v optimizt` in the terminal.
+
+#### Integrate the plugin into the sidebar context menu
+
+Inside the settings directory create a file `Side Bar.sublime-menu` with the following content:
+
+```json
+[
+    {
+        "caption": "Optimizt",
+        "children": [
+          {
+              "caption": "Optimize Images",
+              "command": "optimizt",
+              "args": {
+                "paths": [],
+                "options": "--verbose",
+              }
+          },
+          {
+              "caption": "Optimize Images (lossless)",
+              "command": "optimizt",
+              "args": {
+                "paths": [],
+                "options": "--lossless --verbose"
+              }
+          },
+          {
+              "caption": "Create WebP",
+              "command": "optimizt",
+              "args": {
+                "paths": [],
+                "options": "--webp --verbose"
+              }
+          },
+          {
+              "caption": "Create WebP (lossless)",
+              "command": "optimizt",
+              "args": {
+                "paths": [],
+                "options": "--webp --lossless --verbose"
+              }
+          }
+        ]
+    }
+]
+```
+
+#### How to use
+
+Run the tool through the context menu on a file or directory:
+
+![](images/st_sidebar_menu.png)
+
+</details>
 
 ## Credits
 
