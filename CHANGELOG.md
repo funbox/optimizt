@@ -1,5 +1,12 @@
 # Changelog
 
+## 2.2.0 (28.10.2020)
+
+Updated dependencies.
+
+Unpinned dependencies versions to major range.
+
+
 ## 2.1.0 (27.10.2020)
 
 Added disabling coloring output when no TTY found.
