@@ -296,7 +296,7 @@ Inside the settings directory create a file `Side Bar.sublime-menu` with the fol
 
 Run the tool through the context menu on a file or directory:
 
-![](images/st_sidebar_menu.png)
+<img src="images/st_sidebar_menu.png" width="55%">
 
 </details>
 

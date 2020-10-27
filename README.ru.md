@@ -300,7 +300,7 @@ class OptimiztCommand(sublime_plugin.WindowCommand):
 
 Вызовите контекстное меню на файле или директории и запустите необходимое:
 
-![](images/st_sidebar_menu.png)
+<img src="images/st_sidebar_menu.png" width="55%">
 
 </details>
 
