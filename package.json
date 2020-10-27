@@ -34,7 +34,7 @@
     "imagemin-jpegoptim": "7.0.0",
     "imagemin-pngquant": "9.0.1",
     "imagemin-svgo": "8.0.0",
-    "imagemin-webp": "5.1.0",
+    "imagemin-webp": "6.0.0",
     "ora": "4.0.3"
   },
   "devDependencies": {
