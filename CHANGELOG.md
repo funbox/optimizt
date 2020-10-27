@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.1.0 (27.10.2020)
+
+Added disabling coloring output when no TTY found.
+
+
 ## 2.0.1 (12.10.2020)
 
 Removed unused logic from [formatBytes](lib/formatBytes.js).
