@@ -6,7 +6,7 @@
 
 [![npm](https://img.shields.io/npm/v/@funboxteam/optimizt.svg)](https://www.npmjs.com/package/@funboxteam/optimizt)
 
-**Optimizt** is a CLI tool that helps you prepare images during frontend development. 
+**Optimizt** is a CLI tool that helps you prepare images during frontend development.
 
 It can compress PNG, JPEG, GIF and SVG lossy and lossless and create WebP versions for raster images.
 
@@ -16,12 +16,12 @@ It can compress PNG, JPEG, GIF and SVG lossy and lossless and create WebP versio
 
 As frontend developers we have to care about pictures: compress PNG & JPEG, remove useless parts of SVG,
 create WebP for modern browsers, etc. One day we got tired of using a bunch of apps for that,
-and created one tool that does everything we want.  
+and created one tool that does everything we want.
 
 ## Usage
 
 Install the tool:
- 
+
 ```sh
 npm i -g @funboxteam/optimizt
 ```
@@ -34,8 +34,8 @@ optimizt path/to/picture.jpg
 
 ## Command line flags
 
-- `--webp` — create WebP versions for the passed paths instead of compressing them.  
-- `-l, --lossless` — optimize losslessly instead of lossily.  
+- `--webp` — create WebP versions for the passed paths instead of compressing them.
+- `-l, --lossless` — optimize losslessly instead of lossily.
 - `-v, --verbose` — show additional info, e.g. skipped files.
 - `-V, --version` — show tool version.
 - `-h, --help` — show help.
@@ -75,11 +75,11 @@ Set other options at your discretion. For example:
 
 ![](images/ws_external-tools.png)
 
-As you see on the screenshot above, you may add several “external tools” with the different options passed. 
+As you see on the screenshot above, you may add several “external tools” with the different options passed.
 
 #### How to use
 
-Run the tool through the context menu on a file or directory: 
+Run the tool through the context menu on a file or directory:
 
 <img src="images/ws_menu.png" width="55%">
 
@@ -88,6 +88,123 @@ Run the tool through the context menu on a file or directory:
 To add shortcuts for the added tool go to _Preferences → Keymap → External Tools_:
 
 ![](images/ws_keymap.png)
+
+</details>
+
+### Tasks in Visual Studio Code
+
+<details>
+
+#### Add Task
+
+Run `>Tasks: Open User Tasks` from the _Command Palette_.
+
+In an open file, add new tasks to the `tasks` array, for example:
+
+```javascript
+{
+  // See https://go.microsoft.com/fwlink/?LinkId=733558
+  // for the documentation about the tasks.json format
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "optimizt: Optimize Image",
+      "type": "shell",
+      "command": "optimizt",
+      "args": [
+        "--verbose",
+        {
+          "value": "${file}",
+          "quoting": "strong"
+        }
+      ],
+      "presentation": {
+        "echo": false,
+        "showReuseMessage": false,
+        "clear": true
+      }
+    },
+    {
+      "label": "optimizt: Optimize Image (lossless)",
+      "type": "shell",
+      "command": "optimizt",
+      "args": [
+        "--lossless",
+        "--verbose",
+        {
+          "value": "${file}",
+          "quoting": "strong"
+        }
+      ],
+      "presentation": {
+        "echo": false,
+        "showReuseMessage": false,
+        "clear": true
+      }
+    },
+    {
+      "label": "optimizt: Create WebP",
+      "type": "shell",
+      "command": "optimizt",
+      "args": [
+        "--webp",
+        "--verbose",
+        {
+          "value": "${file}",
+          "quoting": "strong"
+        }
+      ],
+      "presentation": {
+        "echo": false,
+        "showReuseMessage": false,
+        "clear": true
+      }
+    },
+    {
+      "label": "optimizt: Create WebP (lossless)",
+      "type": "shell",
+      "command": "optimizt",
+      "args": [
+        "--webp",
+        "--lossless",
+        "--verbose",
+        {
+          "value": "${file}",
+          "quoting": "strong"
+        }
+      ],
+      "presentation": {
+        "echo": false,
+        "showReuseMessage": false,
+        "clear": true
+      }
+    }
+  ]
+}
+```
+
+#### How to use
+
+1. Open the file for processing using Optimizt, it should be in the active tab.
+2. Run `>Tasks: Run Task` from the _Command Palette_.
+3. Select the required task.
+
+#### Shortcuts
+
+You can add shortcuts for a specific task by run `>Preferences: Open Keyboard Shortcuts (JSON)` from the _Command Palette_.
+
+An example of adding a hotkey to run the "optimizt: Optimize Image (lossless)" task:
+
+```javascript
+// Place your key bindings in this file to override the defaults
+[
+  {
+    "key": "ctrl+l",
+    "command": "workbench.action.tasks.runTask",
+    "args": "optimizt: Optimize Image (lossless)"
+  }
+]
+```
 
 </details>
 
