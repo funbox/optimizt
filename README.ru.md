@@ -210,7 +210,7 @@ optimizt `find . -type f -name '*.jpg'`
 
 </details>
 
-### Sublime Text 3
+### Плагин для Sublime Text 3
 
 <details>
 

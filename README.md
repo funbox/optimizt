@@ -208,7 +208,7 @@ An example of adding a hotkey to run the "optimizt: Optimize Image (lossless)" t
 
 </details>
 
-### Sublime Text 3
+### Plugin for Sublime Text 3
 
 <details>
 
