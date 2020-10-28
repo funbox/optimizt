@@ -1,6 +1,6 @@
 {
   "name": "@funboxteam/optimizt",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "description": "CLI image optimization tool",
   "license": "MIT",
   "author": "Andrey Ivanov (https://github.com/343dev)",
@@ -26,23 +26,23 @@
     "test": "mocha tests"
   },
   "dependencies": {
-    "commander": "4.1.1",
-    "fast-glob": "3.2.2",
-    "imagemin": "7.0.1",
-    "imagemin-gifsicle": "7.0.0",
-    "imagemin-guetzli": "2.0.0",
-    "imagemin-jpegoptim": "6.0.0",
-    "imagemin-pngquant": "8.0.0",
-    "imagemin-svgo": "7.1.0",
-    "imagemin-webp": "5.1.0",
-    "ora": "4.0.3"
+    "commander": "^6.2.0",
+    "fast-glob": "^3.2.4",
+    "imagemin": "^7.0.1",
+    "imagemin-gifsicle": "^7.0.0",
+    "imagemin-guetzli": "^3.0.0",
+    "imagemin-jpegoptim": "^7.0.0",
+    "imagemin-pngquant": "^9.0.1",
+    "imagemin-svgo": "^8.0.0",
+    "imagemin-webp": "^6.0.0",
+    "ora": "^5.1.0"
   },
   "devDependencies": {
-    "@funboxteam/eslint-config": "5.1.0",
-    "eslint": "5.16.0",
-    "husky": "4.2.3",
-    "lint-staged": "10.0.8",
-    "mocha": "7.1.1"
+    "@funboxteam/eslint-config": "^5.1.0",
+    "eslint": "^5.16.0",
+    "husky": "^4.3.0",
+    "lint-staged": "^10.5.0",
+    "mocha": "^8.2.0"
   },
   "husky": {
     "hooks": {
