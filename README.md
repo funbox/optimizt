@@ -244,7 +244,8 @@ class OptimiztCommand(sublime_plugin.WindowCommand):
     })
 ```
 
-Specify path to executable inside `optimizt` variable, this path can be obtained by running `command -v optimizt` in the terminal.
+Specify path to executable inside `optimizt` variable, this path can be obtained by running
+`command -v optimizt` (on *nix) or `where optimizt` (on Windows).
 
 #### Integrate the plugin into the sidebar context menu
 
@@ -260,7 +261,7 @@ Inside the settings directory create a file `Side Bar.sublime-menu` with the fol
               "command": "optimizt",
               "args": {
                 "paths": [],
-                "options": "--verbose",
+                "options": "--verbose"
               }
           },
           {
