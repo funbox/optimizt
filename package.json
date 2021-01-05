@@ -37,6 +37,7 @@
     "imagemin-svgo": "^8.0.0",
     "imagemin-webp": "^6.0.0",
     "ora": "^5.1.0",
+    "pngquant-bin": "^6.0.0",
     "sharp": "^0.27.0"
   },
   "devDependencies": {
