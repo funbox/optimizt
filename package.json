@@ -28,6 +28,7 @@
   "dependencies": {
     "commander": "^6.2.0",
     "fast-glob": "^3.2.4",
+    "gifsicle": "^5.1.0",
     "imagemin": "^7.0.1",
     "imagemin-gifsicle": "^7.0.0",
     "imagemin-guetzli": "^3.0.0",
