@@ -27,6 +27,7 @@
   },
   "dependencies": {
     "commander": "^6.2.0",
+    "exec-buffer": "^3.2.0",
     "fast-glob": "^3.2.4",
     "gifsicle": "^5.1.0",
     "guetzli": "^3.0.1",
