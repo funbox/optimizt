@@ -31,6 +31,7 @@
     "fast-glob": "^3.2.4",
     "gifsicle": "^5.1.0",
     "guetzli": "^3.0.1",
+    "jpegoptim-bin": "^6.0.0",
     "ora": "^5.1.0",
     "p-limit": "^3.1.0",
     "pngquant-bin": "^6.0.0",
