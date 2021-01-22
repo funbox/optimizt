@@ -1,5 +1,14 @@
 # Changelog
 
+## 2.3.0 (25.01.2021)
+
+Bye-bye imagemin. Now we use optimizers directly.
+
+Added a limit on the number of optimization tasks run simultaneously.
+
+Fixed a bug with JPEG processing (jpegoptim could crash with some files).
+
+
 ## 2.2.0 (28.10.2020)
 
 Updated dependencies.
