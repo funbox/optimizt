@@ -38,6 +38,7 @@ describe('CLI', () => {
       const filePaths = [
         'tests/images/ball.jpg',
         'tests/images/ball.png',
+        'tests/images/homer-low.jpg',
         'tests/images/homer.gif',
         'tests/images/SVG/fill-none.svg',
         'tests/images/SVG/optimized.svg',
@@ -52,6 +53,7 @@ describe('CLI', () => {
       const filePaths = [
         'tests/images/ball.jpg',
         'tests/images/ball.png',
+        'tests/images/homer-low.jpg',
         'tests/images/homer.gif',
       ];
       const generatedFilePaths = prepareFilePaths([imagesDir], ['gif', 'jpeg', 'jpg', 'png']);
@@ -205,7 +207,7 @@ describe('CLI', () => {
     });
 
     it('WebP is not created when ratio is less than 1%', () => {
-      if (fs.existsSync(path.join(resultDir, 'homer.webp'))) {
+      if (fs.existsSync(path.join(resultDir, 'homer-low.webp'))) {
         assert.fail('File "homer.webp" has been created');
       }
     });
