@@ -24,3 +24,7 @@ if (!program.args.length) {
     verbose: program.verbose,
   });
 }
+
+process.on('unhandledRejection', error => {
+  console.error(error);
+});
