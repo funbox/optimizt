@@ -1,4 +1,4 @@
-const createWebp = require('./lib/createWebp');
+const convert = require('./lib/convert');
 const { enableVerbose } = require('./lib/log');
 const optimize = require('./lib/optimize');
 const prepareFilePaths = require('./lib/prepareFilePaths');
@@ -10,7 +10,7 @@ async function optimizt({ paths, webp, lossless, verbose }) {
   if (verbose) enableVerbose();
 
   if (webp) {
-    await createWebp({
+    await convert({
       paths: prepareFilePaths(paths, ['gif', 'jpeg', 'jpg', 'png']),
       lossless,
     });
