@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.3.1 (25.01.2021)
+
+Fixed GIF to WebP conversion.
+
+
 ## 2.3.0 (25.01.2021)
 
 Bye-bye imagemin. Now we use optimizers directly.
