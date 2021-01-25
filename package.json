@@ -29,6 +29,7 @@
     "commander": "^6.2.0",
     "exec-buffer": "^3.2.0",
     "fast-glob": "^3.2.4",
+    "gif2webp-bin": "^3.0.1",
     "gifsicle": "^5.1.0",
     "guetzli": "^3.0.1",
     "is-svg": "^4.2.1",
