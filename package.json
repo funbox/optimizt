@@ -32,7 +32,6 @@
     "gif2webp-bin": "^3.0.1",
     "gifsicle": "^5.1.0",
     "guetzli": "^3.0.1",
-    "is-svg": "^4.2.1",
     "jpegoptim-bin": "^6.0.0",
     "ora": "^5.1.0",
     "p-limit": "^3.1.0",
