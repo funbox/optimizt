@@ -8,14 +8,14 @@
 
 **Optimizt** is a CLI tool that helps you prepare images during frontend development.
 
-It can compress PNG, JPEG, GIF and SVG lossy and lossless and create WebP versions for raster images.
+It can compress PNG, JPEG, GIF and SVG lossy and lossless and create AVIF and WebP versions for raster images.
 
 [По-русски](./README.ru.md)
 
 ## Rationale
 
 As frontend developers we have to care about pictures: compress PNG & JPEG, remove useless parts of SVG,
-create WebP for modern browsers, etc. One day we got tired of using a bunch of apps for that,
+create AVIF and WebP for modern browsers, etc. One day we got tired of using a bunch of apps for that,
 and created one tool that does everything we want.
 
 ## Usage
@@ -34,6 +34,7 @@ optimizt path/to/picture.jpg
 
 ## Command line flags
 
+- `--avif` — create AVIF versions for the passed paths instead of compressing them.
 - `--webp` — create WebP versions for the passed paths instead of compressing them.
 - `-l, --lossless` — optimize losslessly instead of lossily.
 - `-v, --verbose` — show additional info, e.g. skipped files.
@@ -48,6 +49,9 @@ optimizt path/to/picture.jpg
 
 # list of images optimization losslessly
 optimizt --lossless path/to/picture.jpg path/to/another/picture.png
+
+# recursive AVIF creation in the passed directory
+optimizt --avif path/to/directory
 
 # recursive WebP creation in the passed directory
 optimizt --webp path/to/directory

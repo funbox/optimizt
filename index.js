@@ -4,15 +4,17 @@ const optimize = require('./lib/optimize');
 const prepareFilePaths = require('./lib/prepareFilePaths');
 const spinner = require('./lib/spinner');
 
-async function optimizt({ paths, webp, lossless, verbose }) {
+async function optimizt({ paths, avif, webp, lossless, verbose }) {
   spinner.start();
 
   if (verbose) enableVerbose();
 
-  if (webp) {
+  if (avif || webp) {
     await convert({
       paths: prepareFilePaths(paths, ['gif', 'jpeg', 'jpg', 'png']),
       lossless,
+      avif,
+      webp,
     });
   } else {
     await optimize({

@@ -4,6 +4,7 @@ const { program } = require('commander');
 const optimizt = require('.');
 
 program
+  .option('--avif', 'create AVIF and exit')
   .option('--webp', 'create WebP and exit')
   .option('-l, --lossless', 'perform lossless optimizations')
   .option('-v, --verbose', 'be verbose');
@@ -19,6 +20,7 @@ if (!program.args.length) {
 } else {
   optimizt({
     paths: program.args,
+    avif: program.avif,
     webp: program.webp,
     lossless: program.lossless,
     verbose: program.verbose,
