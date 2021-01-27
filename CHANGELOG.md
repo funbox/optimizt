@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.4.0 (27.01.2021)
+
+Added AVIF support.
+
+
 ## 2.3.1 (25.01.2021)
 
 Fixed GIF to WebP conversion.
@@ -19,6 +24,7 @@ Fixed a bug with JPEG processing (jpegoptim could crash with some files).
 Updated dependencies.
 
 Unpinned dependencies versions to major range.
+
 
 
 ## 2.1.0 (27.10.2020)
