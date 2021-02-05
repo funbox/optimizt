@@ -309,6 +309,25 @@ class OptimiztCommand(sublime_plugin.WindowCommand):
 
 </details>
 
+## Решение проблем
+
+### «spawn jpegoptim ENOENT», «spawn guetzli ENOENT» и т. д.
+
+Перед установкой необходимо убедиться в том, что не используется опция
+[ignore-scripts](https://docs.npmjs.com/cli/v6/using-npm/config#ignore-scripts).
+
+Подробнее: [#9](https://github.com/funbox/optimizt/issues/9).
+
+### «Cannot find libjpeg», «pkg-config: command not found», «fatal error: 'png.h' file not found» и т. д.
+
+На некоторых ОС могут отсутствовать необходимые библиотеки и утилиты, нужно установить их самостоятельно.
+
+Пример установки на macOS с помощью [Homebrew](https://brew.sh/index_ru):
+
+```bash
+brew install pkg-config jpeg libpng
+```
+
 ## Благодарности
 
 Клёвую картинку для репозитория нарисовал [Игорь Гарибальди](http://pandabanda.com/).
