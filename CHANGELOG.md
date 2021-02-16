@@ -1,5 +1,12 @@
 # Changelog
 
+## 2.4.1 (16.02.2021)
+
+Added Troubleshooting section to [README.md](README.md).
+
+Added error handler for `jpegoptim` child process.
+
+
 ## 2.4.0 (27.01.2021)
 
 Added AVIF support.
