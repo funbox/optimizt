@@ -20,10 +20,7 @@ if (!program.args.length) {
 } else {
   optimizt({
     paths: program.args,
-    avif: program.avif,
-    webp: program.webp,
-    lossless: program.lossless,
-    verbose: program.verbose,
+    ...program.opts(),
   });
 }
 
