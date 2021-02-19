@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.4.2 (19.02.2021)
+
+Fixed ratio logging.
+
+
 ## 2.4.1 (16.02.2021)
 
 Added Troubleshooting section to [README.md](README.md).
