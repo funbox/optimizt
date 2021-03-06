@@ -305,6 +305,119 @@ Run the tool through the context menu on a file or directory:
 
 </details>
 
+### Workflow in Github Workflow
+
+<details>
+
+#### Add Workflow
+
+Add the following file in the following location:
+`.github/workflows/optimizt.yml`
+
+Insert the following into optimizt.yml
+```yml
+name: AVIF
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch and only when there's JPG/JPEG/PNG in the commmit!
+  push:
+    branches: [main]
+    paths:
+      - "**.jpg"
+      - "**.jpeg"
+      - "**.png"
+  pull_request:
+    branches: [main]
+    paths:
+      - "**.jpg"
+      - "**.jpeg"
+      - "**.png"
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  Convert-to-WEBP:
+    runs-on: ubuntu-latest
+    env:
+      OPTIMIZTCONVERTERARGS: --avif --webp . # convert to avif and webp for all JPG/JPEG/PNG files in this folder
+    steps:
+      - name: Install dependencies
+        run: | # install optimizt
+          sudo npm i -g @funboxteam/optimizt --unsafe-perm
+      - uses: actions/checkout@v2 # This is a premade github action
+        with:
+          persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal token
+          fetch-depth: 0 # otherwise, you will failed to push refs to dest repo
+      - name: run optimizt
+        run: optimizt ${OPTIMIZTCONVERTERARGS}
+      - name: Compress Images
+        id: calibre
+        uses: calibreapp/image-actions@main
+        with:
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
+          compressOnly: true # Needed to not get a pullrequest and just compress
+          jpegQuality: '80'
+          jpegProgressive: false
+          pngQuality: '80'
+          webpQuality: "80"
+      #- name: Commit files
+      #  run: |
+      #    git add .
+      #    git config --local user.email "actions@github.com"
+      #    git config --local user.name "github-actions[bot]"
+      #    git diff --quiet && git diff --staged --quiet || git commit -am "Converted all JPG/JPEG/PNG files into compressed WEBP & AVIF"
+      #- name: Push changes
+      #  uses: ad-m/github-push-action@master # This is a premade github action
+      #  with:
+      #    github_token: ${{ secrets.GITHUB_TOKEN }}
+      #    branch: ${{ github.ref }}
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v3
+        with:
+          delete-branch: true
+          title: 'Converted & Optimized JPG/JPEG/PNG to WEBP & AVIF!'
+          branch: optimizt
+          labels: optimizt
+          body: |
+            What did this pull do?
+            - Start automatically when new files were added containing JPG/JPEG/PNG/WEBP/AVIF
+            - Convert all images from JPG/JPEG/PNG to WEBP and AVIF format (100% quality, lossless)
+            - Compress all images (excluding AVIF) (80% quality compression)
+            - Commit and push changes to a pull request, rather then direct commit (because of conflict if someone pushes to main during the workflow or if code changes are needed to use AVIF and/or WEBP)
+      
+            What did this pull do not?
+            - It does not change code. To use AVIF and WEBP it's required to use the <picture> element and present each image in AVIF > WEBP > JPG/JPEG/PNG in that order.
+      
+            Please review this pull carefully, as it will:
+            - Change the looks of the images (due to conversion and compression)
+      
+            If this pull recieves a conflict, just close this pull and continue with the newer one
+            As the newer pull will be based on a more recent commit and will include the current changes aswell
+      
+            Delete the Branch after the pull is merged.
+
+```
+
+#### What does it do?
+
+This workflow will trigger whenever a jpg, jpeg or png file is added, removed or changed.
+Then the workflow will install optimizt trough npm with sudo and --unsafe-perm to install it successfully.
+The current repository will be checkout and then optimizt will do the following by default:
+- Create AVIF from all images in the repository
+- Create WEBP from all images in the repository
+Next calibre is used to compress the jpg, jpeg, png and webp files futher with 80% quality.
+
+#### Push changes trough commit
+
+If the changes need to be pushed trough commit automatically, comment out the: `Create Pull Request` task entirely.
+Uncomment the `Commit files` task entirely.
+
+#### Push changes trough pull
+
+If the changes need to be push trough a pull request, the configuration as is will achieve this.
+
+</details>
+
 ## Troubleshooting
 
 ### “spawn jpegoptim ENOENT”, “spawn guetzli ENOENT”, etc
