@@ -305,7 +305,7 @@ Run the tool through the context menu on a file or directory:
 
 </details>
 
-### Workflow in Github Workflow
+### Workflow for Github Workflow
 
 <details>
 
