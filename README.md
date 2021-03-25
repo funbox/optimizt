@@ -348,9 +348,14 @@ jobs:
     env:
       OPTIMIZTCONVERTERARGS: --avif --webp . # convert to avif and webp for all JPG/JPEG/PNG files in this folder
     steps:
+      # This fix "Missing write access to /usr/local/lib/node_modules" error
+      - name: properly configure node
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
       - name: Install dependencies
         run: | # install optimizt
-          sudo npm i -g @funboxteam/optimizt --unsafe-perm
+          npm i -g @funboxteam/optimizt
       - uses: actions/checkout@v2 # This is a premade github action
         with:
           persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal token
@@ -388,9 +393,14 @@ jobs:
     env:
       OPTIMIZTCONVERTERARGS: --avif --webp . # convert to avif and webp for all JPG/JPEG/PNG files in this folder
     steps:
+      # This fix "Missing write access to /usr/local/lib/node_modules" error
+      - name: properly configure node
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
       - name: Install dependencies
         run: | # install optimizt
-          sudo npm i -g @funboxteam/optimizt --unsafe-perm
+          npm i -g @funboxteam/optimizt
       - uses: actions/checkout@v2 # This is a premade github action
         with:
           persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal token
