@@ -305,14 +305,13 @@ Run the tool through the context menu on a file or directory:
 
 </details>
 
-### Workflow for Github Workflow
+### Workflow for GitHub Actions
 
 <details>
 
-##### What does it do?
+#### What does it do?
 
-This workflow will convert every jpg, jpeg and png file into AVIF and WEBP.
-The workflow will install optimizt trough npm with sudo and --unsafe-perm to install it successfully.
+This workflow will convert every JPG, JPEG and PNG file into AVIF and WebP.
 
 #### Add Workflow
 
@@ -321,7 +320,7 @@ Add the following file in the following location:
 
 ##### Push changes trough commit
 
-The current workflow will push changes based on commit. This means when anything happens with a jpg/jpeg/png it will be triggerd.
+The current workflow will push changes based on commit. This means when anything happens with a JPG/JPEG/PNG it will be triggerd.
 
 Insert the following into optimizt.yml if you want this process fully automatic.
 ```yml
@@ -331,22 +330,15 @@ on:
   push:
     branches: [main]
     paths:
-      - "**.jpg"
-      - "**.jpeg"
-      - "**.png"
-  pull_request:
-    branches: [main]
-    paths:
-      - "**.jpg"
-      - "**.jpeg"
+      - "**.jpe?g"
       - "**.png"
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 jobs:
-  Run Optimizt:
+  run-optimizt:
     runs-on: ubuntu-latest
     env:
-      OPTIMIZTCONVERTERARGS: --avif --webp . # convert to avif and webp for all JPG/JPEG/PNG files in this folder
+      OPTIMIZTCONVERTERARGS: --verbose --force --avif --webp . # convert to avif and webp for all JPG/JPEG/PNG files in this folder
     steps:
       # This fix "Missing write access to /usr/local/lib/node_modules" error
       - name: properly configure node
@@ -373,63 +365,6 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: ${{ github.ref }}
-```
-
-##### Push changes trough pull
-
-If the changes need to be pusht as a pull request. It's adviced NOT to use the on trigger push. As this will create a loop which means you have to close the next pull request yourself. Other options to trigger are to use a sceduel (cron) or simply manually hit the button to start the workflow. The following would be sufficient to create the changes in a pull request.
-
-```yml
-name: optimizt
-on:
-  schedule:
-    # * is a special character in YAML so you have to quote this string
-   - cron: "0 0 * * *" # Every day at 00:00 UTC
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
-jobs:
-  Run Optimizt:
-    runs-on: ubuntu-latest
-    env:
-      OPTIMIZTCONVERTERARGS: --avif --webp . # convert to avif and webp for all JPG/JPEG/PNG files in this folder
-    steps:
-      # This fix "Missing write access to /usr/local/lib/node_modules" error
-      - name: properly configure node
-        uses: actions/setup-node@v2
-        with:
-          node-version: 14
-      - name: Install dependencies
-        run: | # install optimizt
-          npm i -g @funboxteam/optimizt
-      - uses: actions/checkout@v2 # This is a premade github action
-        with:
-          persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal token
-          fetch-depth: 0 # otherwise, you will failed to push refs to dest repo
-      - name: run optimizt
-        run: optimizt ${OPTIMIZTCONVERTERARGS}
-      - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v3
-        with:
-          delete-branch: true
-          title: 'Converted JPG/JPEG/PNG to WEBP & AVIF!'
-          branch: optimizt
-          labels: optimizt
-          body: |
-            What did this pull do?
-            - Start automatically when new files were added containing JPG/JPEG/PNG/WEBP/AVIF
-            - Convert all images from JPG/JPEG/PNG to WEBP and AVIF format (100% quality, lossless)
-            - Commit and push changes to a pull request, rather then direct commit (because of conflict if someone pushes to main during the workflow or if code changes are needed to use AVIF and/or WEBP)
-      
-            What did this pull do not?
-            - It does not change code. To use AVIF and WEBP it's required to use the <picture> element and present each image in AVIF > WEBP > JPG/JPEG/PNG in that order.
-      
-            Please review this pull carefully, as it will:
-            - Change the looks of the images (due to conversion and compression)
-      
-            If this pull recieves a conflict, just close this pull and continue with the newer one
-            As the newer pull will be based on a more recent commit and will include the current changes aswell
-      
-            Delete the Branch after the pull is merged.
 ```
 
 </details>
