@@ -305,6 +305,68 @@ Run the tool through the context menu on a file or directory:
 
 </details>
 
+### Workflow for GitHub Actions
+
+<details>
+
+#### What does it do?
+
+This workflow will convert every JPEG and PNG file into AVIF and WebP.
+
+#### Add Workflow
+
+Add the following file in the following location:
+`.github/workflows/optimizt.yml`
+
+##### Push changes trough commit
+
+The current workflow will push changes based on commit. This means when anything happens with a JPEG and/or PNG file it will be triggerd.
+
+Insert the following into optimizt.yml if you want this process fully automatic.
+```yml
+name: optimizt
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch and only when there's JPEG/PNG in the commmit
+  push:
+    branches: [main]
+    paths:
+      - "**.jpe?g"
+      - "**.png"
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+jobs:
+  run-optimizt:
+    runs-on: ubuntu-latest
+    steps:
+      # This fixes the "Missing write access to /usr/local/lib/node_modules" error
+      - name: Properly configure Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+      - name: Install dependencies
+        run: |
+          npm i --global @funboxteam/optimizt
+      - uses: actions/checkout@v2
+        with:
+          persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal token
+          fetch-depth: 0 # otherwise, pushing to dest repo will fail
+      - name: Run Optimizt
+        run: optimizt --verbose --force --avif --webp . # convert to avif and webp for all JPEG PNG files in this folder
+      - name: Commit files
+        run: |
+          git add .
+          git config --local user.email "actions@github.com"
+          git config --local user.name "github-actions[bot]"
+          git diff --quiet && git diff --staged --quiet || git commit -am "Converted all JPEG/PNG files into compressed WEBP & AVIF"
+      - name: Push changes
+        uses: ad-m/github-push-action@master # This is a premade github action
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
+```
+
+</details>
+
 ## Troubleshooting
 
 ### “spawn jpegoptim ENOENT”, “spawn guetzli ENOENT”, etc
