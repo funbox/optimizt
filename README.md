@@ -311,7 +311,7 @@ Run the tool through the context menu on a file or directory:
 
 #### What does it do?
 
-This workflow will convert every JPG, JPEG and PNG file into AVIF and WebP.
+This workflow will convert every JPEG and PNG file into AVIF and WebP.
 
 #### Add Workflow
 
@@ -320,13 +320,13 @@ Add the following file in the following location:
 
 ##### Push changes trough commit
 
-The current workflow will push changes based on commit. This means when anything happens with a JPG/JPEG/PNG it will be triggerd.
+The current workflow will push changes based on commit. This means when anything happens with a JPEG and/or PNG file it will be triggerd.
 
 Insert the following into optimizt.yml if you want this process fully automatic.
 ```yml
 name: optimizt
 on:
-  # Triggers the workflow on push or pull request events but only for the main branch and only when there's JPG/JPEG/PNG in the commmit!
+  # Triggers the workflow on push or pull request events but only for the main branch and only when there's JPEG/PNG in the commmit
   push:
     branches: [main]
     paths:
@@ -337,29 +337,27 @@ on:
 jobs:
   run-optimizt:
     runs-on: ubuntu-latest
-    env:
-      OPTIMIZTCONVERTERARGS: --verbose --force --avif --webp . # convert to avif and webp for all JPG/JPEG/PNG files in this folder
     steps:
-      # This fix "Missing write access to /usr/local/lib/node_modules" error
-      - name: properly configure node
+      # This fixes the "Missing write access to /usr/local/lib/node_modules" error
+      - name: Properly configure Node.js
         uses: actions/setup-node@v2
         with:
           node-version: 14
       - name: Install dependencies
-        run: | # install optimizt
-          npm i -g @funboxteam/optimizt
-      - uses: actions/checkout@v2 # This is a premade github action
+        run: |
+          npm i --global @funboxteam/optimizt
+      - uses: actions/checkout@v2
         with:
           persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal token
-          fetch-depth: 0 # otherwise, you will failed to push refs to dest repo
-      - name: run optimizt
-        run: optimizt ${OPTIMIZTCONVERTERARGS}
+          fetch-depth: 0 # otherwise, pushing to dest repo will fail
+      - name: Run Optimizt
+        run: optimizt --verbose --force --avif --webp . # convert to avif and webp for all JPEG PNG files in this folder
       - name: Commit files
         run: |
           git add .
           git config --local user.email "actions@github.com"
           git config --local user.name "github-actions[bot]"
-          git diff --quiet && git diff --staged --quiet || git commit -am "Converted all JPG/JPEG/PNG files into compressed WEBP & AVIF"
+          git diff --quiet && git diff --staged --quiet || git commit -am "Converted all JPEG/PNG files into compressed WEBP & AVIF"
       - name: Push changes
         uses: ad-m/github-push-action@master # This is a premade github action
         with:
