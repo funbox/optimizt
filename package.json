@@ -36,7 +36,7 @@
     "ora": "^5.4.0",
     "p-limit": "^3.1.0",
     "pngquant-bin": "^6.0.0",
-    "sharp": "^0.27.1",
+    "sharp": "^0.28.1",
     "svgo": "^2.3.0"
   },
   "devDependencies": {
