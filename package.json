@@ -30,7 +30,7 @@
     "exec-buffer": "^3.2.0",
     "fast-glob": "^3.2.5",
     "gif2webp-bin": "^3.0.2",
-    "gifsicle": "^5.1.0",
+    "gifsicle": "^5.2.0",
     "guetzli": "^3.0.1",
     "jpegoptim-bin": "^6.0.0",
     "ora": "^5.4.0",
