@@ -26,7 +26,7 @@
     "test": "mocha tests"
   },
   "dependencies": {
-    "commander": "^7.1.0",
+    "commander": "^7.2.0",
     "exec-buffer": "^3.2.0",
     "fast-glob": "^3.2.5",
     "gif2webp-bin": "^3.0.1",
