@@ -18,6 +18,7 @@ module.exports = {
     },
 
     'cleanupAttrs',
+    'mergeStyles',
     'inlineStyles',
     'removeDoctype',
     'removeXMLProcInst',

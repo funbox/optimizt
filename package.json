@@ -37,7 +37,7 @@
     "p-limit": "^3.1.0",
     "pngquant-bin": "^6.0.0",
     "sharp": "^0.27.1",
-    "svgo": "^2.0.2"
+    "svgo": "^2.3.0"
   },
   "devDependencies": {
     "@funboxteam/eslint-config": "^5.3.0",
