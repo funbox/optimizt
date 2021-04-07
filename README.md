@@ -36,6 +36,7 @@ optimizt path/to/picture.jpg
 
 - `--avif` — create AVIF versions for the passed paths instead of compressing them.
 - `--webp` — create WebP versions for the passed paths instead of compressing them.
+- `--force` — force create AVIF and WebP even if output file size increased or file already exists.
 - `-l, --lossless` — optimize losslessly instead of lossily.
 - `-v, --verbose` — show additional info, e.g. skipped files.
 - `-V, --version` — show tool version.

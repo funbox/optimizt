@@ -4,7 +4,7 @@ const optimize = require('./lib/optimize');
 const prepareFilePaths = require('./lib/prepareFilePaths');
 const spinner = require('./lib/spinner');
 
-async function optimizt({ paths, avif, webp, lossless, verbose }) {
+async function optimizt({ paths, avif, webp, force, lossless, verbose }) {
   spinner.start();
 
   if (verbose) enableVerbose();
@@ -15,6 +15,7 @@ async function optimizt({ paths, avif, webp, lossless, verbose }) {
       lossless,
       avif,
       webp,
+      force,
     });
   } else {
     await optimize({
