@@ -36,6 +36,7 @@ optimizt path/to/picture.jpg
 
 - `--avif` — create AVIF versions for the passed paths instead of compressing them.
 - `--webp` — create WebP versions for the passed paths instead of compressing them.
+- `--force` — force create AVIF and WebP even if output file size increased or file already exists.
 - `-l, --lossless` — optimize losslessly instead of lossily.
 - `-v, --verbose` — show additional info, e.g. skipped files.
 - `-V, --version` — show tool version.
@@ -309,61 +310,65 @@ Run the tool through the context menu on a file or directory:
 
 <details>
 
-#### What does it do?
+Create `optimizt.yml` file in the `.github/workflows` directory of your repository.
 
-This workflow will convert every JPEG and PNG file into AVIF and WebP.
+Insert the following code into `optimizt.yml`:
 
-#### Add Workflow
-
-Add the following file in the following location:
-`.github/workflows/optimizt.yml`
-
-##### Push changes trough commit
-
-The current workflow will push changes based on commit. This means when anything happens with a JPEG and/or PNG file it will be triggerd.
-
-Insert the following into optimizt.yml if you want this process fully automatic.
 ```yml
 name: optimizt
+
 on:
-  # Triggers the workflow on push or pull request events but only for the main branch and only when there's JPEG/PNG in the commmit
+  # Triggers the workflow on push events but only for the “main” branch
+  # and only when there's JPEG/PNG in the commmit
   push:
-    branches: [main]
+    branches:
+      - main
     paths:
       - "**.jpe?g"
       - "**.png"
+  
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
+
 jobs:
-  run-optimizt:
+  convert:
     runs-on: ubuntu-latest
+
     steps:
-      # This fixes the "Missing write access to /usr/local/lib/node_modules" error
-      - name: Properly configure Node.js
-        uses: actions/setup-node@v2
+      # Install Node.js to avoid EACCESS errors upon install packages
+      - uses: actions/setup-node@v2
         with:
           node-version: 14
-      - name: Install dependencies
-        run: |
-          npm i --global @funboxteam/optimizt
+
+      - name: Install Optimizt
+        run: npm install --global @funboxteam/optimizt
+
       - uses: actions/checkout@v2
         with:
           persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal token
-          fetch-depth: 0 # otherwise, pushing to dest repo will fail
+          fetch-depth: 0 # get all commits (only the last one fetched by default)
+
       - name: Run Optimizt
-        run: optimizt --verbose --force --avif --webp . # convert to avif and webp for all JPEG PNG files in this folder
-      - name: Commit files
+        run: optimizt --verbose --force --avif --webp .
+
+      - name: Commit changes
         run: |
-          git add .
+          git add -A
           git config --local user.email "actions@github.com"
           git config --local user.name "github-actions[bot]"
-          git diff --quiet && git diff --staged --quiet || git commit -am "Converted all JPEG/PNG files into compressed WEBP & AVIF"
+          git diff --quiet && git diff --staged --quiet \
+            || git commit -am "Create WebP & AVIF versions"
+
       - name: Push changes
-        uses: ad-m/github-push-action@master # This is a premade github action
+        uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: ${{ github.ref }}
 ```
+
+This workflow will find all JPEG and PNG files in pushed commits and add the AVIF and WebP versions via a new commit.
+
+More examples you can find in the [workflows](./workflows) directory.
 
 </details>
 

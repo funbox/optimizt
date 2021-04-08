@@ -1,5 +1,15 @@
 # Changelog
 
+## 2.5.0 (08.04.2021)
+
+Added `--force` flag to CLI, which allows creating AVIF and WebP even if output file size increased or file already exists.
+
+Added [workflows](./workflows) directory with examples of GitHub Actions workflows.
+
+Enabled use of [LZW compression](https://github.com/kohler/gifsicle/commit/0fd160b506ab0c4bce9f6852b494dc2b4ac9733f)
+to optimize GIF files in lossy mode.
+
+
 ## 2.4.2 (19.02.2021)
 
 Fixed ratio logging.

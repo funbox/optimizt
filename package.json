@@ -1,6 +1,6 @@
 {
   "name": "@funboxteam/optimizt",
-  "version": "2.4.2",
+  "version": "2.5.0",
   "description": "CLI image optimization tool",
   "license": "MIT",
   "author": "Andrey Ivanov (https://github.com/343dev)",
@@ -23,33 +23,32 @@
   "scripts": {
     "lint-src": "eslint --cache --config .eslintrc.js --ignore-pattern 'tests/*' ./",
     "lint-tests": "eslint --config tests/.eslintrc.js --cache tests/",
-    "test": "mocha tests"
+    "test": "mocha tests",
+    "update-git-hooks": "npx simple-git-hooks"
   },
   "dependencies": {
-    "commander": "^7.1.0",
+    "commander": "^7.2.0",
     "exec-buffer": "^3.2.0",
     "fast-glob": "^3.2.5",
-    "gif2webp-bin": "^3.0.1",
-    "gifsicle": "^5.1.0",
+    "gif2webp-bin": "^3.0.2",
+    "gifsicle": "^5.2.0",
     "guetzli": "^3.0.1",
     "jpegoptim-bin": "^6.0.0",
-    "ora": "^5.3.0",
+    "ora": "^5.4.0",
     "p-limit": "^3.1.0",
     "pngquant-bin": "^6.0.0",
-    "sharp": "^0.27.1",
-    "svgo": "^2.0.2"
+    "sharp": "^0.28.1",
+    "svgo": "^2.3.0"
   },
   "devDependencies": {
     "@funboxteam/eslint-config": "^5.3.0",
     "eslint": "^5.16.0",
-    "husky": "^4.3.8",
     "lint-staged": "^10.5.4",
-    "mocha": "^8.3.0"
+    "mocha": "^8.3.2",
+    "simple-git-hooks": "^2.3.1"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged -q"
-    }
+  "simple-git-hooks": {
+    "pre-commit": "npx lint-staged"
   },
   "lint-staged": {
     "!(tests)/**/*.js": [

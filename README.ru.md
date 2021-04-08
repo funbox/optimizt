@@ -34,6 +34,7 @@ optimizt path/to/picture.jpg
 
 - `--avif` — создать AVIF-версии для переданных изображений, а не сжимать их.
 - `--webp` — создать WebP-версии для переданных изображений, а не сжимать их.
+- `--force` — принудительно создавать AVIF и WebP-версии игнорируя размер итогового файла и его существование.
 - `-l, --lossless` — оптимизировать без потерь, а не с потерями.
 - `-v, --verbose` — выводить дополнительную информацию в ходе работы (например, проигнорированные файлы).
 - `-V, --version` — вывести версию изображения.
@@ -306,6 +307,74 @@ class OptimiztCommand(sublime_plugin.WindowCommand):
 Вызовите контекстное меню на файле или директории и запустите необходимое:
 
 <img src="images/st_sidebar_menu.png" width="55%">
+
+</details>
+
+### «Workflow» для GitHub Actions
+
+<details>
+
+Создайте файл `optimizt.yml` в директории `.github/workflows` вашего репозитория.
+
+Вставьте следующий код в файл `optimizt.yml`:
+
+```yml
+name: optimizt
+
+on:
+  # Срабатывает на событие "push" для ветки "main", но только при наличии
+  # каких-либо изменений JPEG и PNG файлов в коммите.
+  push:
+    branches:
+      - main
+    paths:
+      - "**.jpe?g"
+      - "**.png"
+  
+  # Разрешаем ручной запуск данного воркфлоу из таба Actions
+  workflow_dispatch:
+
+jobs:
+  convert:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Устанавливаем Node.js для того чтобы избежать ошибки EACCESS
+      # во время дальнейшей установки пакетов
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 14
+
+      - name: Install Optimizt
+        run: npm install --global @funboxteam/optimizt
+
+      - uses: actions/checkout@v2
+        with:
+          persist-credentials: false # используем персональный токен доступа, вместо GITHUB_TOKEN
+          fetch-depth: 0 # загружаем все коммиты (по умолчанию грузится только последний)
+
+      - name: Run Optimizt
+        run: optimizt --verbose --force --avif --webp .
+
+      - name: Commit changes
+        run: |
+          git add -A
+          git config --local user.email "actions@github.com"
+          git config --local user.name "github-actions[bot]"
+          git diff --quiet && git diff --staged --quiet \
+            || git commit -am "Create WebP & AVIF versions"
+
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
+```
+
+Данный воркфлоу отслеживает наличие JPEG и PNG файлов в новых коммитах, и при обнаружении таковых добавит AVIF и WebP
+версии с помощью нового коммита.
+
+Больше примеров можно найти в директории [workflows](./workflows).
 
 </details>
 
