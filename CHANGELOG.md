@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.6.0 (28.05.2021)
+
+Spinner was replaced with a progress bar.
+
+
 ## 2.5.0 (08.04.2021)
 
 Added `--force` flag to CLI, which allows creating AVIF and WebP even if output file size increased or file already exists.
