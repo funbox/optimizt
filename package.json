@@ -35,7 +35,6 @@
     "gifsicle": "^5.2.0",
     "guetzli": "^3.0.1",
     "jpegoptim-bin": "^6.0.0",
-    "ora": "^5.4.0",
     "p-limit": "^3.1.0",
     "pngquant-bin": "^6.0.0",
     "sharp": "^0.28.1",

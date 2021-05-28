@@ -2,11 +2,8 @@ const convert = require('./lib/convert');
 const { enableVerbose } = require('./lib/log');
 const optimize = require('./lib/optimize');
 const prepareFilePaths = require('./lib/prepareFilePaths');
-const spinner = require('./lib/spinner');
 
 async function optimizt({ paths, avif, webp, force, lossless, verbose }) {
-  spinner.start();
-
   if (verbose) enableVerbose();
 
   if (avif || webp) {
@@ -23,8 +20,6 @@ async function optimizt({ paths, avif, webp, force, lossless, verbose }) {
       lossless,
     });
   }
-
-  spinner.stopAndPersist({ text: 'Done!' });
 }
 
 module.exports = optimizt;
