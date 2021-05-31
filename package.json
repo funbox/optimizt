@@ -1,6 +1,6 @@
 {
   "name": "@funboxteam/optimizt",
-  "version": "2.5.0",
+  "version": "2.6.0",
   "description": "CLI image optimization tool",
   "license": "MIT",
   "author": "Andrey Ivanov (https://github.com/343dev)",
@@ -27,6 +27,7 @@
     "update-git-hooks": "npx simple-git-hooks"
   },
   "dependencies": {
+    "cli-progress": "^3.9.0",
     "commander": "^7.2.0",
     "exec-buffer": "^3.2.0",
     "fast-glob": "^3.2.5",
@@ -34,7 +35,6 @@
     "gifsicle": "^5.2.0",
     "guetzli": "^3.0.1",
     "jpegoptim-bin": "^6.0.0",
-    "ora": "^5.4.0",
     "p-limit": "^3.1.0",
     "pngquant-bin": "^6.0.0",
     "sharp": "^0.28.1",
