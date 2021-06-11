@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.6.1 (11.06.2021)
+
+Fixed “Only YUV color space input jpeg is supported” error.
+Now Optimizt sets SRBG color space for optimized images.
+
+
 ## 2.6.0 (28.05.2021)
 
 Spinner was replaced with a progress bar.
