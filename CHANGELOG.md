@@ -1,9 +1,14 @@
 # Changelog
 
+## 2.7.0 (16.06.2021)
+
+Added display of summary.
+
+
 ## 2.6.1 (11.06.2021)
 
 Fixed “Only YUV color space input jpeg is supported” error.
-Now Optimizt sets SRBG color space for optimized images.
+Now Optimizt may set sRGB color space for images before processing them.
 
 
 ## 2.6.0 (28.05.2021)
