@@ -46,7 +46,7 @@ optimizt path/to/picture.jpg
 # оптимизация одной картинки
 optimizt path/to/picture.jpg
 
-# оптимизация нескольких изображений без потерь без потерь
+# оптимизация нескольких изображений без потерь
 optimizt --lossless path/to/picture.jpg path/to/another/picture.png
 
 # рекурсивное создание AVIF-версий для изображений в указанной директории
