@@ -37,7 +37,7 @@ optimizt path/to/picture.jpg
 - `--avif` — create AVIF versions for the passed paths instead of compressing them.
 - `--webp` — create WebP versions for the passed paths instead of compressing them.
 - `--force` — force create AVIF and WebP even if output file size increased or file already exists.
-- `-l, --lossless` — optimize losslessly instead of lossily.
+- `-l, --lossless` — optimize losslessly instead of lossily (WebP and AVIF only).
 - `-v, --verbose` — show additional info, e.g. skipped files.
 - `-V, --version` — show tool version.
 - `-h, --help` — show help.
@@ -60,6 +60,41 @@ optimizt --webp path/to/directory
 # recursive JPEG optimization in the current directory
 optimizt `find . -type f -name '*.jpg'`
 ```
+
+## Differences between “lossy” and “lossless”
+
+### JPEG
+
+In lossy mode [jpegoptim](https://github.com/tjko/jpegoptim) is used with flags: `--strip-all`,
+`--all-progressive`, `--max=80`.
+
+Lossless mode uses [Guetzli](https://github.com/google/guetzli) encoder with `--quality 90` flag.
+
+Guetzli aims for excellent compression density at high visual quality.
+
+If you re-optimize the same file in lossless mode, the file size may decrease, but the visual quality will also degrade.
+
+### PNG
+
+For both modes [pngquant](https://github.com/kornelski/pngquant) (lossy compressor) is used with flags:
+`--speed 1`, `--strip`.
+
+### GIF
+
+For both modes [gifsicle](https://github.com/kohler/gifsicle) utility is used.
+
+Following flags is used in lossy mode: `-O3`, `--lossy=100`.
+
+In lossless mode no additional flags is used.
+
+### WebP & AVIF
+
+For both modes [sharp](https://github.com/lovell/sharp) module is used.
+
+In lossless mode an “lossless” option is used:
+
+- https://sharp.pixelplumbing.com/api-output#webp
+- https://sharp.pixelplumbing.com/api-output#avif
 
 ## Integrations
 
