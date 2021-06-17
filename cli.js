@@ -7,7 +7,7 @@ program
   .option('--avif', 'create AVIF and exit')
   .option('--webp', 'create WebP and exit')
   .option('--force', 'force create AVIF and WebP')
-  .option('-l, --lossless', 'perform lossless optimizations')
+  .option('-l, --lossless', 'perform lossless optimizations (WebP and AVIF only)')
   .option('-v, --verbose', 'be verbose');
 
 program
