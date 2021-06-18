@@ -58,7 +58,7 @@ optimizt --avif path/to/directory
 optimizt --webp path/to/directory
 
 # recursive JPEG optimization in the current directory
-optimizt `find . -type f -name '*.jpg'`
+find . -iname \*.jpg -exec optimizt {} +
 ```
 
 ## Differences between “lossy” and “lossless”
