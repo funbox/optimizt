@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.7.2 (21.06.2021)
+
+Sometimes Optimizt could return empty JPEG files. Now it's fixed.
+
+
 ## 2.7.1 (18.06.2021)
 
 Added “Differences between ‘lossy’ and ‘lossless’” section to [README.md](README.md).
