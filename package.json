@@ -31,7 +31,7 @@
     "cli-progress": "^3.9.0",
     "commander": "^8.2.0",
     "exec-buffer": "^3.2.0",
-    "fast-glob": "^3.2.5",
+    "fast-glob": "^3.2.7",
     "gif2webp-bin": "^3.0.2",
     "gifsicle": "^5.2.0",
     "guetzli": "^3.0.1",
