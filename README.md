@@ -425,6 +425,17 @@ Example (on macOS via [Homebrew](https://brew.sh)):
 brew install pkg-config jpeg libpng
 ```
 
+### “npm ERR! Cannot find libjpeg or you have too old version (v6 or later required)”
+
+If this error occurs during installation and you have a Mac on an Apple M1 chip, then try installing with
+the following command:
+
+```bash
+CPPFLAGS="-I /opt/homebrew/Cellar/jpeg/9d/include" LDFLAGS="-L /opt/homebrew/Cellar/jpeg/9d/lib" npm i -g @funboxteam/optimizt
+```
+
+See [#30](https://github.com/funbox/optimizt/issues/30).
+
 ## Credits
 
 Cute picture for the project was made by [Igor Garybaldi](http://pandabanda.com/).
