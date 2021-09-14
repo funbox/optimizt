@@ -1,5 +1,15 @@
 # Changelog
 
+## 2.7.3 (14.09.2021)
+
+Updated project dependencies.
+
+Optimizt now has bigger file sizes for AVIF images. See:
+
+- <https://github.com/lovell/sharp/issues/2562>
+- <https://github.com/lovell/sharp/issues/2850>
+
+
 ## 2.7.2 (21.06.2021)
 
 Sometimes Optimizt could return empty JPEG files. Now it's fixed.
