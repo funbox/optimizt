@@ -303,8 +303,8 @@ describe('CLI', () => {
       // Save converted image to check it for rewrite later
       testImageBuffer = fs.readFileSync(testImagePath);
 
-      if (calcRatio(originalImageSize, outputImageSize) < 90) {
-        assert.fail('Optimization ratio for "ball.avif" is less than 90%');
+      if (calcRatio(originalImageSize, outputImageSize) < 88) {
+        assert.fail('Optimization ratio for "ball.avif" is less than 88%');
       }
     });
 
@@ -359,8 +359,8 @@ describe('CLI', () => {
       const outputImageSize = fs.statSync(path.join(resultDir, 'ball.avif')).size;
       const ratio = calcRatio(originalImageSize, outputImageSize);
 
-      if (ratio !== 57) {
-        assert.fail('Optimization ratio for "ball.avif" is not equal 57%');
+      if (ratio !== 40) {
+        assert.fail('Optimization ratio for "ball.avif" is not equal 40%');
       }
     });
   });

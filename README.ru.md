@@ -433,6 +433,17 @@ jobs:
 brew install pkg-config jpeg libpng
 ```
 
+### “npm ERR! Cannot find libjpeg or you have too old version (v6 or later required)”
+
+Если во время установки появляется данная ошибка и у вас Mac с чипом Apple M1, то попробуйте использовать для установки
+следующую команду:
+
+```bash
+CPPFLAGS="-I /opt/homebrew/Cellar/jpeg/9d/include" LDFLAGS="-L /opt/homebrew/Cellar/jpeg/9d/lib" npm i -g @funboxteam/optimizt
+```
+
+Подробнее: [#30](https://github.com/funbox/optimizt/issues/30).
+
 ## Благодарности
 
 Клёвую картинку для репозитория нарисовал [Игорь Гарибальди](http://pandabanda.com/).
