@@ -413,7 +413,7 @@ More examples you can find in the [workflows](./workflows) directory.
 
 Make sure that the [ignore-scripts](https://docs.npmjs.com/cli/v6/using-npm/config#ignore-scripts) option is not active.
 
-More info: [#9](https://github.com/funbox/optimizt/issues/9).
+See [#9](https://github.com/funbox/optimizt/issues/9).
 
 ### “Cannot find libjpeg”, “pkg-config: command not found”, “fatal error: 'png.h' file not found”, etc
 
