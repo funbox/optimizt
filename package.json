@@ -28,7 +28,7 @@
     "update-git-hooks": "npx simple-git-hooks"
   },
   "dependencies": {
-    "cli-progress": "^3.9.0",
+    "cli-progress": "^3.9.1",
     "commander": "^8.2.0",
     "exec-buffer": "^3.2.0",
     "fast-glob": "^3.2.7",
