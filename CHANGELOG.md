@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.7.4 (22.09.2021)
+
+Fixed SVG processing.
+
+
 ## 2.7.3 (14.09.2021)
 
 Updated project dependencies.
