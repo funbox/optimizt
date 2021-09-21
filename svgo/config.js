@@ -41,6 +41,7 @@ module.exports = {
     'removeUnusedNS',
     'cleanupIDs',
     'cleanupNumericValues',
+    'cleanupListOfValues',
     'moveElemsAttrsToGroup',
     'moveGroupAttrsToElems',
     'collapseGroups',
@@ -49,5 +50,7 @@ module.exports = {
     'convertEllipseToCircle',
     'sortAttrs',
     'sortDefsChildren',
+    'removeOffCanvasPaths',
+    'reusePaths',
   ],
 };
