@@ -1,15 +1,15 @@
 /* eslint-disable */
 'use strict';
 
-const { visitSkip, detachNodeFromParent } = require('../node_modules/svgo/lib/xast.js');
-const { collectStylesheet, computeStyle } = require('../node_modules/svgo/lib/style.js');
+const { visitSkip, detachNodeFromParent } = require('svgo/lib/xast.js');
+const { collectStylesheet, computeStyle } = require('svgo/lib/style.js');
 const {
   elems,
   attrsGroups,
   elemsGroups,
   attrsGroupsDefaults,
   presentationNonInheritableGroupAttrs,
-} = require('../node_modules/svgo/plugins/_collections');
+} = require('svgo/plugins/_collections');
 
 /*
   ⚠️ We need to preserve `stroke="none"`.
