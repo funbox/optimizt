@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.7.5 (23.09.2021)
+
+Fixed “Cannot find module” error that occurred if Optimizt was installed using Yarn.
+
+
 ## 2.7.4 (22.09.2021)
 
 Fixed SVG processing.
