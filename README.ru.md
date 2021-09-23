@@ -433,7 +433,7 @@ jobs:
 brew install pkg-config jpeg libpng
 ```
 
-### “npm ERR! Cannot find libjpeg or you have too old version (v6 or later required)”
+### «npm ERR! Cannot find libjpeg or you have too old version (v6 or later required)»
 
 Если во время установки появляется данная ошибка и у вас Mac с чипом Apple M1, то попробуйте использовать для установки
 следующую команду:

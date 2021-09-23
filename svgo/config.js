@@ -1,4 +1,4 @@
-const removeUnknownsAndDefaultsMod = require('./removeUnknownsAndDefaults');
+const removeUnknownsAndDefaults = require('./removeUnknownsAndDefaults');
 
 module.exports = {
   multipass: true,
@@ -8,13 +8,12 @@ module.exports = {
   },
   plugins: [
     /*
-      We want to remove useless parts of SVG,
-      but to leave `fill="none"` & `stroke="none"`.
+      We want to remove useless parts of SVG, but to leave `stroke="none"`.
       For this purpose we use here a custom version of `removeUnknownsAndDefaults`.
      */
     {
-      name: 'removeUnknownsAndDefaultsMod',
-      ...removeUnknownsAndDefaultsMod,
+      name: 'removeUnknownsAndDefaults',
+      ...removeUnknownsAndDefaults,
     },
 
     'cleanupAttrs',
@@ -42,6 +41,7 @@ module.exports = {
     'removeUnusedNS',
     'cleanupIDs',
     'cleanupNumericValues',
+    'cleanupListOfValues',
     'moveElemsAttrsToGroup',
     'moveGroupAttrsToElems',
     'collapseGroups',
@@ -50,5 +50,7 @@ module.exports = {
     'convertEllipseToCircle',
     'sortAttrs',
     'sortDefsChildren',
+    'removeOffCanvasPaths',
+    'reusePaths',
   ],
 };

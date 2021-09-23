@@ -1,6 +1,6 @@
 {
   "name": "@funboxteam/optimizt",
-  "version": "2.7.3",
+  "version": "2.7.4",
   "description": "CLI image optimization tool",
   "license": "MIT",
   "author": "Andrey Ivanov (https://github.com/343dev)",
@@ -28,7 +28,7 @@
     "update-git-hooks": "npx simple-git-hooks"
   },
   "dependencies": {
-    "cli-progress": "^3.9.0",
+    "cli-progress": "^3.9.1",
     "commander": "^8.2.0",
     "exec-buffer": "^3.2.0",
     "fast-glob": "^3.2.7",
@@ -39,7 +39,7 @@
     "p-limit": "^3.1.0",
     "pngquant-bin": "^6.0.0",
     "sharp": "^0.29.1",
-    "svgo": "^2.5.0"
+    "svgo": "2.6.1"
   },
   "devDependencies": {
     "@funboxteam/eslint-config": "^5.3.1",
