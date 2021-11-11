@@ -24,6 +24,7 @@
     "lint-src": "eslint --cache --config .eslintrc.js --ignore-pattern 'tests/*' ./",
     "lint-tests": "eslint --config tests/.eslintrc.js --cache tests/",
     "lint": "npm run lint-src && npm run lint-tests",
+    "prepublishOnly": "lawyer",
     "test": "mocha tests",
     "update-git-hooks": "npx simple-git-hooks"
   },
