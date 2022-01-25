@@ -43,8 +43,8 @@
     "svgo": "2.6.1"
   },
   "devDependencies": {
-    "@funboxteam/eslint-config": "^5.3.1",
-    "eslint": "^5.16.0",
+    "@funboxteam/eslint-config": "^7.1.0",
+    "eslint": "^7.32.0",
     "lint-staged": "^11.1.2",
     "mocha": "^9.1.1",
     "simple-git-hooks": "^2.6.1"
