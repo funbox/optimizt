@@ -453,6 +453,30 @@ CPPFLAGS="-I /opt/homebrew/Cellar/jpeg/9d/include" LDFLAGS="-L /opt/homebrew/Cel
 
 See [#30](https://github.com/funbox/optimizt/issues/30).
 
+## Docker
+
+### Build the image
+
+If you want to build the Docker image, you need to:
+
+1. Clone this repo and cd into it.
+2. Run `docker build -t funbox/optimizt .`.
+
+OR:
+
+- Run `docker build -t funbox/optimizt https://github.com/funbox/optimizt.git`, but keep in mind that the
+[.dockerignore](.dockerignore) file will be [ignored](https://github.com/docker/cli/issues/2827).
+
+### Run the container
+
+Inside the container WORKDIR is set to `/src`, so by default all paths will be resolved relative to it.
+
+Usage example:
+
+```bash
+docker run -v $(pwd):/src optimizt --webp image.png
+```
+
 ## Credits
 
 Cute picture for the project was made by [Igor Garybaldi](http://pandabanda.com/).
