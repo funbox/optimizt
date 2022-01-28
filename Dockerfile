@@ -8,11 +8,11 @@ COPY . .
 ENV NODE_ENV="production"
 
 RUN apt update \
-  && apt install --yes --no-install-recommends build-essential libjpeg-dev libpng-dev pkg-config \
+  && apt install --yes --no-install-recommends build-essential libpng16-16 libjpeg62-turbo libjpeg62-turbo-dev libpng-dev pkg-config \
   && npm ci \
   && npm link \
   && npm cache clean --force \
-  && apt purge --yes build-essential pkg-config \
+  && apt purge --yes build-essential pkg-config libpng-dev libjpeg62-turbo-dev \
   && apt autoremove --yes --purge \
   && rm -rf /var/lib/apt/lists/* /usr/share/doc /usr/share/man
 
