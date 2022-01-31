@@ -2,8 +2,9 @@ const convert = require('./lib/convert');
 const { enableVerbose } = require('./lib/log');
 const optimize = require('./lib/optimize');
 const prepareFilePaths = require('./lib/prepareFilePaths');
+const prepareOutputPath = require('./lib/prepareOutputPath');
 
-async function optimizt({ paths, avif, webp, force, lossless, verbose }) {
+async function optimizt({ paths, avif, webp, force, lossless, verbose, output }) {
   if (verbose) enableVerbose();
 
   if (avif || webp) {
@@ -13,11 +14,13 @@ async function optimizt({ paths, avif, webp, force, lossless, verbose }) {
       avif,
       webp,
       force,
+      output: prepareOutputPath(output),
     });
   } else {
     await optimize({
       paths: prepareFilePaths(paths, ['gif', 'jpeg', 'jpg', 'png', 'svg']),
       lossless,
+      output: prepareOutputPath(output),
     });
   }
 }
