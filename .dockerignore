@@ -1,0 +1,7 @@
+*
+!lib
+!svgo
+!cli.js
+!index.js
+!package*.json
+!LICENSE

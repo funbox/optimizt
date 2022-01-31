@@ -460,6 +460,30 @@ CPPFLAGS="-I /opt/homebrew/Cellar/jpeg/9d/include" LDFLAGS="-L /opt/homebrew/Cel
 
 Подробнее: [#30](https://github.com/funbox/optimizt/issues/30).
 
+## Docker
+
+### Сборка образа
+
+Для того чтобы собрать Докер образ, нужно:
+
+1. Клонировать этот репозиторий и перейти в него.
+2. Выполнить `docker build -t funbox/optimizt .`.
+
+ИЛИ:
+
+- Выполнить `docker build -t funbox/optimizt https://github.com/funbox/optimizt.git`, но нужно иметь ввиду, что файл
+  [.dockerignore](.dockerignore) будет [проигнорирован](https://github.com/docker/cli/issues/2827).
+
+### Запуск контейнера
+
+Внутри контейнера значение WORKDIR установлено как `/src`, поэтому все пути будут разрешаться относительно неё.
+
+Пример использования:
+
+```bash
+docker run -v $(pwd):/src optimizt --webp image.png
+```
+
 ## Благодарности
 
 Клёвую картинку для репозитория нарисовал [Игорь Гарибальди](http://pandabanda.com/).
