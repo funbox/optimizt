@@ -65,36 +65,53 @@ find . -iname \*.jpg -exec optimizt {} +
 
 ### JPEG
 
-In lossy mode [jpegoptim](https://github.com/tjko/jpegoptim) is used with flags: `--strip-all`,
-`--all-progressive`, `--max=80`.
+#### Lossy
 
-Lossless mode uses [Guetzli](https://github.com/google/guetzli) encoder with `--quality 90` flag.
+[jpegoptim](https://github.com/tjko/jpegoptim) with flags: `--strip-all`, `--all-progressive`, `--max=80`.
+
+#### Lossless
+
+[Guetzli](https://github.com/google/guetzli) with `--quality 90` flag.
 
 Guetzli aims for excellent compression density at high visual quality.
 
-If you re-optimize the same file in lossless mode, the file size may decrease, but the visual quality will also degrade.
+Keep in mind that if you reoptimize the same file in lossless mode, the file size may decrease, but the visual quality
+will also degrade.
 
 ### PNG
 
-For both modes [pngquant](https://github.com/kornelski/pngquant) (lossy compressor) is used with flags:
-`--speed 1`, `--strip`.
+[sharp](https://github.com/lovell/sharp) with [parameters](https://sharp.pixelplumbing.com/api-output#png):
+
+- **lossy**: `compressionLevel: 9`, `adaptiveFiltering: false`, `palette: true`
+- **lossless**: `compressionLevel: 9`, `adaptiveFiltering: true`, `palette: false`
 
 ### GIF
 
-For both modes [gifsicle](https://github.com/kohler/gifsicle) utility is used.
+[gifsicle](https://github.com/kohler/gifsicle) with flags:
 
-Following flags is used in lossy mode: `-O3`, `--lossy=100`.
+- **lossy**: `-O3`, `--lossy=100`
+- **lossless**: no flags
 
-In lossless mode no additional flags is used.
+### WebP
 
-### WebP & AVIF
+[sharp](https://github.com/lovell/sharp) with [parameters](https://sharp.pixelplumbing.com/api-output#webp):
 
-For both modes [sharp](https://github.com/lovell/sharp) module is used.
+- **lossy**: `quality: 85`, `lossless: false`
+- **lossless**: `quality: 85`, `lossless: true`
 
-In lossless mode an “lossless” option is used:
+### WebP (GIF)
 
-- https://sharp.pixelplumbing.com/api-output#webp
-- https://sharp.pixelplumbing.com/api-output#avif
+[gif2webp](https://developers.google.com/speed/webp/docs/gif2webp) with flags:
+
+- **lossy**: `-lossy`, `-min_size`
+- **lossless**: no flags
+
+### AVIF
+
+[sharp](https://github.com/lovell/sharp) with [parameters](https://sharp.pixelplumbing.com/api-output#avif):
+
+- **lossy**: `lossless: false`
+- **lossless**: `lossless: true`
 
 ## Integrations
 

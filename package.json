@@ -1,6 +1,6 @@
 {
   "name": "@funboxteam/optimizt",
-  "version": "2.7.5",
+  "version": "3.0.0",
   "description": "CLI image optimization tool",
   "license": "MIT",
   "author": "Andrey Ivanov (https://github.com/343dev)",
@@ -29,25 +29,24 @@
     "update-git-hooks": "npx simple-git-hooks"
   },
   "dependencies": {
-    "cli-progress": "^3.9.1",
-    "commander": "^8.2.0",
+    "cli-progress": "^3.10.0",
+    "commander": "^8.3.0",
     "exec-buffer": "^3.2.0",
-    "fast-glob": "^3.2.7",
+    "fast-glob": "^3.2.11",
     "gif2webp-bin": "^3.0.2",
     "gifsicle": "^5.2.0",
     "guetzli": "^3.0.1",
     "jpegoptim-bin": "^6.0.0",
     "p-limit": "^3.1.0",
-    "pngquant-bin": "^6.0.0",
-    "sharp": "^0.29.1",
+    "sharp": "^0.29.3",
     "svgo": "2.6.1"
   },
   "devDependencies": {
-    "@funboxteam/eslint-config": "^5.3.1",
-    "eslint": "^5.16.0",
-    "lint-staged": "^11.1.2",
-    "mocha": "^9.1.1",
-    "simple-git-hooks": "^2.6.1"
+    "@funboxteam/eslint-config": "^7.1.0",
+    "eslint": "^7.32.0",
+    "lint-staged": "^12.3.1",
+    "mocha": "^9.2.0",
+    "simple-git-hooks": "^2.7.0"
   },
   "simple-git-hooks": {
     "pre-commit": "npx lint-staged"

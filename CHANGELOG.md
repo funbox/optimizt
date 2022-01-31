@@ -1,5 +1,10 @@
 # Changelog
 
+## 3.0.0 (31.01.2022)
+
+Removed [pngquant-bin](https://github.com/imagemin/pngquant-bin) due to license issues.
+
+
 ## 2.7.5 (23.09.2021)
 
 Fixed “Cannot find module” error that occurred if Optimizt was installed using Yarn.

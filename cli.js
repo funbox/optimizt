@@ -12,8 +12,8 @@ program
 
 program
   .usage('[options] <dir> <file ...>')
-  .version(require('./package').version, '-V, --version')
-  .description(require('./package').description)
+  .version(require('./package.json').version, '-V, --version')
+  .description(require('./package.json').description)
   .parse(process.argv);
 
 if (!program.args.length) {

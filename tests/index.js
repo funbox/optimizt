@@ -5,7 +5,7 @@ const path = require('path');
 const copyRecursive = require('./utils/copyRecursive');
 const removeRecursive = require('./utils/removeRecursive');
 
-const optimizt = require('../');
+const optimizt = require('..');
 const calcRatio = require('../lib/calcRatio');
 const prepareFilePaths = require('../lib/prepareFilePaths');
 

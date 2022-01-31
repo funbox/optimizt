@@ -63,10 +63,13 @@ find . -iname \*.jpg -exec optimizt {} +
 
 ### JPEG
 
-По умолчанию, в режиме lossy, используется [jpegoptim](https://github.com/tjko/jpegoptim) с ключами: `--strip-all`,
-`--all-progressive`, `--max=80`.
+#### Lossy
 
-В режиме lossless используется энкодер [Guetzli](https://github.com/google/guetzli) с ключом `--quality 90`.
+[jpegoptim](https://github.com/tjko/jpegoptim) с ключами: `--strip-all`, `--all-progressive`, `--max=80`.
+
+#### Lossless
+
+[Guetzli](https://github.com/google/guetzli) с ключом `--quality 90`.
 
 Guetzli позволяет получить высокий уровень компрессии и при этом сохранить хорошее визуальное качество изображения.
 
@@ -75,25 +78,38 @@ Guetzli позволяет получить высокий уровень ком
 
 ### PNG
 
-В обоих режимах используется lossy-компрессор [pngquant](https://github.com/kornelski/pngquant) с ключами: `--speed 1`,
-`--strip`.
+[sharp](https://github.com/lovell/sharp) с [параметрами](https://sharp.pixelplumbing.com/api-output#png):
+
+- **lossy**: `compressionLevel: 9`, `adaptiveFiltering: false`, `palette: true`
+- **lossless**: `compressionLevel: 9`, `adaptiveFiltering: true`, `palette: false`
 
 ### GIF
 
-В обоих режимах используется утилита [gifsicle](https://github.com/kohler/gifsicle).
+[gifsicle](https://github.com/kohler/gifsicle) с ключами:
 
-При запуске в режиме lossy используются ключи: `-O3`, `--lossy=100`.
+- **lossy**: `-O3`, `--lossy=100`
+- **lossless**: без ключей
 
-В режиме lossless дополнительные ключи не устанавливаются.
+### WebP
 
-### WebP & AVIF
+[sharp](https://github.com/lovell/sharp) с [параметрами](https://sharp.pixelplumbing.com/api-output#webp):
 
-В обоих режимах используется модуль [sharp](https://github.com/lovell/sharp).
+- **lossy**: `quality: 85`, `lossless: false`
+- **lossless**: `quality: 85`, `lossless: true`
 
-Для режима lossless используется одноимённая опция, которая гарантирует сжатие без потерь:
+### WebP (GIF)
 
-- https://sharp.pixelplumbing.com/api-output#webp
-- https://sharp.pixelplumbing.com/api-output#avif
+[gif2webp](https://developers.google.com/speed/webp/docs/gif2webp) с ключами:
+
+- **lossy**: `-lossy`, `-min_size`
+- **lossless**: без ключей
+
+### AVIF
+
+[sharp](https://github.com/lovell/sharp) с [параметрами](https://sharp.pixelplumbing.com/api-output#avif):
+
+- **lossy**: `lossless: false`
+- **lossless**: `lossless: true`
 
 ## Интеграции
 
