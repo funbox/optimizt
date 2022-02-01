@@ -39,6 +39,7 @@ optimizt path/to/picture.jpg
 - `--force` — force create AVIF and WebP even if output file size increased or file already exists.
 - `-l, --lossless` — optimize losslessly instead of lossily (WebP and AVIF only).
 - `-v, --verbose` — show additional info, e.g. skipped files.
+- `-o, --output` — write result to provided directory.
 - `-V, --version` — show tool version.
 - `-h, --help` — show help.
 
