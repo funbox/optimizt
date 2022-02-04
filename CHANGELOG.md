@@ -1,5 +1,10 @@
 # Changelog
 
+## 3.1.0 (04.02.2022)
+
+Added `--output` flag, which allows output to be written to provided directory.
+
+
 ## 3.0.0 (31.01.2022)
 
 Removed [pngquant-bin](https://github.com/imagemin/pngquant-bin) due to license issues.
