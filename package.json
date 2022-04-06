@@ -16,7 +16,6 @@
     "MIGRATION.md",
     "cli.js",
     "index.js",
-    "images/",
     "lib/",
     "svgo/"
   ],
