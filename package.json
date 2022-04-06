@@ -25,7 +25,8 @@
     "lint-tests": "eslint --config tests/.eslintrc.js --cache tests/",
     "lint": "npm run lint-src && npm run lint-tests",
     "prepublishOnly": "lawyer",
-    "test": "mocha tests",
+    "test": "jest tests-jest",
+    "test-mocha": "mocha tests",
     "update-git-hooks": "npx simple-git-hooks"
   },
   "dependencies": {
