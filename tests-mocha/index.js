@@ -9,7 +9,7 @@ const optimizt = require('..');
 const calcRatio = require('../lib/calcRatio');
 const prepareFilePaths = require('../lib/prepareFilePaths');
 
-const testsDir = path.join(process.cwd(), 'tests');
+const testsDir = path.join(process.cwd(), 'tests-mocha');
 const imagesDir = path.join(testsDir, 'images');
 const resultDir = path.join(testsDir, 'result');
 
@@ -41,14 +41,14 @@ describe('CLI', () => {
   describe('Paths generation', () => {
     it('Paths for "optimize" action are generated correctly', () => {
       const filePaths = [
-        'tests/images/ball.jpg',
-        'tests/images/ball.png',
-        'tests/images/homer-low.jpg',
-        'tests/images/homer.gif',
-        'tests/images/pixel.jpg',
-        'tests/images/SVG/fill-none.svg',
-        'tests/images/SVG/optimized.svg',
-        'tests/images/SVG/stroke-none.svg',
+        'tests-mocha/images/ball.jpg',
+        'tests-mocha/images/ball.png',
+        'tests-mocha/images/homer-low.jpg',
+        'tests-mocha/images/homer.gif',
+        'tests-mocha/images/pixel.jpg',
+        'tests-mocha/images/SVG/fill-none.svg',
+        'tests-mocha/images/SVG/optimized.svg',
+        'tests-mocha/images/SVG/stroke-none.svg',
       ];
       const generatedFilePaths = prepareFilePaths([imagesDir], ['gif', 'jpeg', 'jpg', 'png', 'svg']);
 
@@ -57,11 +57,11 @@ describe('CLI', () => {
 
     it('Paths for "convert" action are generated correctly', () => {
       const filePaths = [
-        'tests/images/ball.jpg',
-        'tests/images/ball.png',
-        'tests/images/homer-low.jpg',
-        'tests/images/homer.gif',
-        'tests/images/pixel.jpg',
+        'tests-mocha/images/ball.jpg',
+        'tests-mocha/images/ball.png',
+        'tests-mocha/images/homer-low.jpg',
+        'tests-mocha/images/homer.gif',
+        'tests-mocha/images/pixel.jpg',
       ];
       const generatedFilePaths = prepareFilePaths([imagesDir], ['gif', 'jpeg', 'jpg', 'png']);
 

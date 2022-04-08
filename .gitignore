@@ -51,4 +51,4 @@ Session.vim
 .eslintcache
 
 
-/tests/result
+/tests-mocha/result

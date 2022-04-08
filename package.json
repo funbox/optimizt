@@ -1,6 +1,6 @@
 {
   "name": "@funboxteam/optimizt",
-  "version": "3.1.0",
+  "version": "3.1.1",
   "description": "CLI image optimization tool",
   "license": "MIT",
   "author": "Andrey Ivanov (https://github.com/343dev)",
@@ -16,16 +16,17 @@
     "MIGRATION.md",
     "cli.js",
     "index.js",
-    "images/",
     "lib/",
     "svgo/"
   ],
   "scripts": {
-    "lint-src": "eslint --cache --config .eslintrc.js --ignore-pattern 'tests/*' ./",
-    "lint-tests": "eslint --config tests/.eslintrc.js --cache tests/",
+    "lint-src": "eslint --config .eslintrc.js --ignore-pattern 'tests-{mocha,jest}/*' ./",
+    "lint-tests": "eslint --config tests-mocha/.eslintrc.js tests-mocha/ && eslint --config tests-jest/.eslintrc.js tests-jest/",
     "lint": "npm run lint-src && npm run lint-tests",
     "prepublishOnly": "lawyer",
-    "test": "mocha tests",
+    "test": "npm run test-jest && npm run test-mocha",
+    "test-jest": "jest tests-jest",
+    "test-mocha": "mocha tests-mocha",
     "update-git-hooks": "npx simple-git-hooks"
   },
   "dependencies": {
@@ -44,6 +45,8 @@
   "devDependencies": {
     "@funboxteam/eslint-config": "^7.1.0",
     "eslint": "^7.32.0",
+    "eslint-plugin-jest": "^26.1.4",
+    "jest": "^27.5.1",
     "lint-staged": "^12.3.1",
     "mocha": "^9.2.0",
     "simple-git-hooks": "^2.7.0"
@@ -53,13 +56,16 @@
   },
   "lint-staged": {
     "!(tests)/**/*.js": [
-      "eslint --fix --cache --config .eslintrc.js"
+      "eslint --fix --config .eslintrc.js"
     ],
     "./*.js": [
-      "eslint --fix --cache --config .eslintrc.js"
+      "eslint --fix --config .eslintrc.js"
     ],
-    "tests/**/*.js": [
-      "eslint --fix --cache --config tests/.eslintrc.js"
+    "tests-mocha/**/*.js": [
+      "eslint --fix --config tests-mocha/.eslintrc.js"
+    ],
+    "tests-jest/**/*.js": [
+      "eslint --fix --config tests-jest/.eslintrc.js"
     ]
   }
 }
