@@ -8,7 +8,7 @@ const imageName = 'jpeg-one-pixel.jpg';
 const outputDir = fs.mkdtempSync(path.join(os.tmpdir(), 'optimizt-test-'));
 
 afterAll(() => {
-  fs.rmSync(outputDir, { recursive: true });
+  fs.rmdirSync(outputDir, { recursive: true });
 });
 
 test('Write path does not change', () => {
