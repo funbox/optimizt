@@ -1,5 +1,10 @@
 # Changelog
 
+## 3.1.1 (08.04.2022)
+
+Removed logging unsupported symbols in CI environment.
+
+
 ## 3.1.0 (04.02.2022)
 
 Added `--output` flag, which allows output to be written to provided directory.
