@@ -33,5 +33,5 @@ test('Exit if specified path to file instead of directory', () => {
 });
 
 test('Full path is generated', () => {
-  expect(prepareOutputPath('tests-jest/images')).toBe(path.resolve(__dirname, 'images'));
+  expect(prepareOutputPath('tests/images')).toBe(path.resolve(__dirname, 'images'));
 });
