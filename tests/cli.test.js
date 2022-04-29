@@ -222,7 +222,7 @@ describe('CLI', () => {
         const stdoutRatio = grepTotalRatio(stdout);
 
         expectStringContains(stdout, 'Converting 6 images (lossless)...');
-        expectRatio(stdoutRatio, 25, 30);
+        expectRatio(stdoutRatio, 45, 50);
         expectFileNotModified(`${fileBasename}.png`);
         expectFileExists(`${fileBasename}.avif`);
       });
@@ -318,7 +318,7 @@ describe('CLI', () => {
         const stdoutRatio = grepTotalRatio(stdout);
 
         expectStringContains(stdout, 'Converting 6 images (lossless)...');
-        expectRatio(stdoutRatio, 1, 5);
+        expectRatio(stdoutRatio, 30, 35);
         expectFileNotModified(`${fileBasename}.png`);
         expectFileExists(`${fileBasename}.webp`);
       });
@@ -340,7 +340,7 @@ describe('CLI', () => {
         expectFileExists(`${fileBasename}.webp`);
       });
 
-      // TODO: Fix a bug for this test case
+      // TODO: Fix me
       // test('AVIF and WebP should not be created if ratio <= 0', () => {
       //   const fileBasename = 'jpeg-one-pixel';
       //   const stdout = runCliWithParams(`--avif --webp ${workDir}${fileBasename}.jpg`);
