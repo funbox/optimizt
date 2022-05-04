@@ -340,19 +340,15 @@ describe('CLI', () => {
         expectFileExists(`${fileBasename}.webp`);
       });
 
-      // TODO: Fix me
-      // test('AVIF and WebP should not be created if ratio <= 0', () => {
-      //   const fileBasename = 'jpeg-one-pixel';
-      //   const stdout = runCliWithParams(`--avif --webp ${workDir}${fileBasename}.jpg`);
-      //
-      //   console.log('stdout', stdout);
-      //
-      //   expectStringstdout, ('Converting 1 image (lossy)...');
-      //   expectStringstdout, ('Done!');
-      //   expectFileNotModified(`${fileBasename}.jpg`);
-      //   expectFileNotExists(`${fileBasename}.avif`);
-      //   expectFileNotExists(`${fileBasename}.webp`);
-      // });
+      test('AVIF and WebP should not be created if ratio <= 0', () => {
+        const stdout = runCliWithParams(`--avif --webp ${workDir}jpeg-low-quality.jpg ${workDir}jpeg-one-pixel.jpg`);
+
+        expectStringContains(stdout, 'Converting 2 images (lossy)...');
+        expectFileNotModified('jpeg-low-quality.jpg');
+        expectFileNotExists('jpeg-low-quality.webp');
+        expectFileNotModified('jpeg-one-pixel.jpg');
+        expectFileNotExists('jpeg-one-pixel.avif');
+      });
     });
 
     describe('Lossless (--lossless)', () => {
