@@ -24,7 +24,7 @@ test('Exit if specified path to file instead of directory', () => {
 
   console.log = jest.fn();
 
-  expect(() => prepareOutputPath(path.resolve(__dirname, 'images', 'svg-fill-none.svg'))).toThrow();
+  expect(() => prepareOutputPath(path.resolve(__dirname, 'images', 'svg-not-optimized.svg'))).toThrow();
   expect(processExitMock).toHaveBeenCalledWith(1);
   expect(console.log.mock.calls[0][1]).toBe('Output path must be a directory');
 
@@ -33,5 +33,5 @@ test('Exit if specified path to file instead of directory', () => {
 });
 
 test('Full path is generated', () => {
-  expect(prepareOutputPath('tests-jest/images')).toBe(path.resolve(__dirname, 'images'));
+  expect(prepareOutputPath('tests/images')).toBe(path.resolve(__dirname, 'images'));
 });

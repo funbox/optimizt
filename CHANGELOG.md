@@ -1,5 +1,12 @@
 # Changelog
 
+## 3.1.2 (06.05.2022)
+
+Fixed total saved size calculation.
+
+Added file format to the success message in conversion mode.
+
+
 ## 3.1.1 (08.04.2022)
 
 Removed logging unsupported symbols in CI environment.
