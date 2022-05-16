@@ -1,10 +1,10 @@
-const convert = require('./lib/convert');
-const { enableVerbose } = require('./lib/log');
-const optimize = require('./lib/optimize');
-const prepareFilePaths = require('./lib/prepareFilePaths');
-const prepareOutputPath = require('./lib/prepareOutputPath');
+import convert from './lib/convert.js';
+import { enableVerbose } from './lib/log.js';
+import optimize from './lib/optimize.js';
+import prepareFilePaths from './lib/prepareFilePaths.js';
+import prepareOutputPath from './lib/prepareOutputPath.js';
 
-async function optimizt({ paths, avif, webp, force, lossless, verbose, output }) {
+export default async function optimizt({ paths, avif, webp, force, lossless, verbose, output }) {
   if (verbose) enableVerbose();
 
   if (avif || webp) {
@@ -24,5 +24,3 @@ async function optimizt({ paths, avif, webp, force, lossless, verbose, output })
     });
   }
 }
-
-module.exports = optimizt;

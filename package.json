@@ -8,7 +8,7 @@
     "type": "git",
     "url": "https://github.com/funbox/optimizt"
   },
-  "main": "index.js",
+  "exports": "./index.js",
   "bin": {
     "optimizt": "./cli.js"
   },
@@ -26,6 +26,10 @@
     "prepublishOnly": "lawyer",
     "test": "jest tests",
     "update-git-hooks": "npx simple-git-hooks"
+  },
+  "type": "module",
+  "engines": {
+    "node": ">=14.16"
   },
   "dependencies": {
     "cli-progress": "^3.10.0",
