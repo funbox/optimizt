@@ -20,8 +20,8 @@
     "svgo/"
   ],
   "scripts": {
-    "lint-src": "eslint --config .eslintrc.js --ignore-pattern 'tests/*' ./",
-    "lint-tests": "eslint --config tests/.eslintrc.js tests/",
+    "lint-src": "eslint --config .eslintrc.cjs --ignore-pattern 'tests/*' ./",
+    "lint-tests": "eslint --config tests/.eslintrc.cjs tests/",
     "lint": "npm run lint-src && npm run lint-tests",
     "prepublishOnly": "lawyer",
     "test": "NODE_OPTIONS=--experimental-vm-modules jest tests",
@@ -45,6 +45,7 @@
     "svgo": "2.6.1"
   },
   "devDependencies": {
+    "@babel/eslint-parser": "^7.17.0",
     "@funboxteam/eslint-config": "^7.1.0",
     "eslint": "^7.32.0",
     "eslint-plugin-jest": "^26.1.4",
@@ -57,13 +58,13 @@
   },
   "lint-staged": {
     "!(tests)/**/*.js": [
-      "eslint --fix --config .eslintrc.js"
+      "eslint --fix --config .eslintrc.cjs"
     ],
     "./*.js": [
-      "eslint --fix --config .eslintrc.js"
+      "eslint --fix --config .eslintrc.cjs"
     ],
     "tests/**/*.js": [
-      "eslint --fix --config tests/.eslintrc.js"
+      "eslint --fix --config tests/.eslintrc.cjs"
     ]
   }
 }

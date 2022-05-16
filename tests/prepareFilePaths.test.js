@@ -3,7 +3,7 @@ import { fileURLToPath } from 'node:url';
 
 import prepareFilePaths from '../lib/prepareFilePaths.js';
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const DEFAULT_IMAGE_PATH = resolvePath(['images']);
 const DEFAULT_EXTENSIONS = ['gif', 'jpeg', 'jpg', 'png', 'svg'];
@@ -45,11 +45,11 @@ test('Files are filtered by extension', () => {
 test('Only relative file paths are generated', () => {
   expect(prepareFilePaths([DEFAULT_IMAGE_PATH], DEFAULT_EXTENSIONS)).not.toEqual(
     expect.arrayContaining([
-      expect.stringMatching(new RegExp(`^${__dirname}`)),
+      expect.stringMatching(new RegExp(`^${dirname}`)),
     ]),
   );
 });
 
 function resolvePath(segments) {
-  return path.resolve(__dirname, ...segments);
+  return path.resolve(dirname, ...segments);
 }

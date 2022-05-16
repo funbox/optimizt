@@ -4,10 +4,10 @@ import os from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const cliPath = path.resolve('cli.js');
-const imagesDir = path.resolve(__dirname, 'images');
+const imagesDir = path.resolve(dirname, 'images');
 
 let tempDir = null;
 let workDir = null;

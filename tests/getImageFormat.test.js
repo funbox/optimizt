@@ -4,10 +4,10 @@ import { fileURLToPath } from 'node:url';
 
 import getImageFormat from '../lib/getImageFormat.js';
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const dirname = path.dirname(fileURLToPath(import.meta.url));
 
 function readFile(filePath) {
-  return fs.readFileSync(path.resolve(__dirname, filePath));
+  return fs.readFileSync(path.resolve(dirname, filePath));
 }
 
 const gifBuffer = readFile('images/gif-not-optimized.gif');
