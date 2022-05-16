@@ -32,7 +32,7 @@
     "node": ">=14.16"
   },
   "dependencies": {
-    "cli-progress": "^3.10.0",
+    "cli-progress": "^3.11.0",
     "commander": "^8.3.0",
     "exec-buffer": "^3.2.0",
     "fast-glob": "^3.2.11",
