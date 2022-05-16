@@ -39,7 +39,7 @@
     "gif2webp-bin": "^5.0.0",
     "gifsicle": "^7.0.0",
     "guetzli": "^5.0.0",
-    "jpegoptim-bin": "^6.0.1",
+    "jpegoptim-bin": "^7.1.0",
     "p-limit": "^3.1.0",
     "sharp": "^0.29.3",
     "svgo": "2.6.1"
