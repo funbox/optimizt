@@ -24,7 +24,7 @@
     "lint-tests": "eslint --config tests/.eslintrc.js tests/",
     "lint": "npm run lint-src && npm run lint-tests",
     "prepublishOnly": "lawyer",
-    "test": "jest tests",
+    "test": "NODE_OPTIONS=--experimental-vm-modules jest tests",
     "update-git-hooks": "npx simple-git-hooks"
   },
   "type": "module",

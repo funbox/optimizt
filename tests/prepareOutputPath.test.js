@@ -1,6 +1,11 @@
-const path = require('path');
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-const prepareOutputPath = require('../lib/prepareOutputPath');
+import { jest } from '@jest/globals';
+
+import prepareOutputPath from '../lib/prepareOutputPath.js';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 test('Exit if the path does not exist', () => {
   const processExitMock = jest.spyOn(process, 'exit').mockImplementation(exitCode => {

@@ -1,8 +1,12 @@
-const fs = require('fs');
-const path = require('path');
-const sharp = require('sharp');
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-const setSrgbColorspace = require('../lib/setSrgbColorspace');
+import sharp from 'sharp';
+
+import setSrgbColorspace from '../lib/setSrgbColorspace.js';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const bwImageBuffer = fs.readFileSync(path.resolve(__dirname, 'images', 'jpeg-one-pixel.jpg'));
 const srgbImageBuffer = fs.readFileSync(path.resolve(__dirname, 'images', 'jpeg-low-quality.jpg'));

@@ -1,4 +1,4 @@
-const calcRatio = require('../lib/calcRatio');
+import calcRatio from '../lib/calcRatio.js';
 
 test('Ratio should be “50” if the file size has decreased by 50%', () => {
   expect(calcRatio(1000000, 500000)).toBe(50);

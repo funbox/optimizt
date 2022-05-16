@@ -1,8 +1,11 @@
-const fs = require('fs');
-const os = require('os');
-const path = require('path');
+import fs from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-const prepareWriteFilePath = require('../lib/prepareWriteFilePath');
+import prepareWriteFilePath from '../lib/prepareWriteFilePath.js';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const imageName = 'jpeg-one-pixel.jpg';
 const outputDir = fs.mkdtempSync(path.join(os.tmpdir(), 'optimizt-test-'));

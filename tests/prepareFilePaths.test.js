@@ -1,6 +1,9 @@
-const path = require('path');
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-const prepareFilePaths = require('../lib/prepareFilePaths');
+import prepareFilePaths from '../lib/prepareFilePaths.js';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const DEFAULT_IMAGE_PATH = resolvePath(['images']);
 const DEFAULT_EXTENSIONS = ['gif', 'jpeg', 'jpg', 'png', 'svg'];
