@@ -68,7 +68,8 @@ find . -iname \*.jpg -exec optimizt {} +
 
 #### Lossy
 
-[jpegoptim](https://github.com/tjko/jpegoptim) with flags: `--strip-all`, `--all-progressive`, `--max=80`.
+[sharp](https://github.com/lovell/sharp) with [parameters](https://sharp.pixelplumbing.com/api-output#jpeg): 
+`progressive: true`.
 
 #### Lossless
 
@@ -427,32 +428,21 @@ More examples you can find in the [workflows](./workflows) directory.
 
 ## Troubleshooting
 
-### “spawn jpegoptim ENOENT”, “spawn guetzli ENOENT”, etc
+### “spawn guetzli ENOENT”, etc
 
 Make sure that the [ignore-scripts](https://docs.npmjs.com/cli/v6/using-npm/config#ignore-scripts) option is not active.
 
 See [#9](https://github.com/funbox/optimizt/issues/9).
 
-### “Cannot find libjpeg”, “pkg-config: command not found”, “fatal error: 'png.h' file not found”, etc
+### “pkg-config: command not found”, “fatal error: 'png.h' file not found”, etc
 
 Some operating systems may lack of required libraries and utils, so you need to install them.
 
 Example (on macOS via [Homebrew](https://brew.sh)):
 
 ```bash
-brew install pkg-config jpeg libpng
+brew install pkg-config libpng
 ```
-
-### “npm ERR! Cannot find libjpeg or you have too old version (v6 or later required)”
-
-If this error occurs during installation and you have a Mac on an Apple M1 chip, then try installing with
-the following command:
-
-```bash
-CPPFLAGS="-I /opt/homebrew/Cellar/jpeg/9d/include" LDFLAGS="-L /opt/homebrew/Cellar/jpeg/9d/lib" npm i -g @funboxteam/optimizt
-```
-
-See [#30](https://github.com/funbox/optimizt/issues/30).
 
 ## Docker
 
