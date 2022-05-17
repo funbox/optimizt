@@ -1,6 +1,6 @@
 {
   "name": "@funboxteam/optimizt",
-  "version": "3.1.2",
+  "version": "4.0.0",
   "description": "CLI image optimization tool",
   "license": "MIT",
   "author": "Andrey Ivanov (https://github.com/343dev)",
@@ -29,7 +29,7 @@
   },
   "type": "module",
   "engines": {
-    "node": ">=14.16"
+    "node": ">=14.14"
   },
   "dependencies": {
     "cli-progress": "^3.11.0",
