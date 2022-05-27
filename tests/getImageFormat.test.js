@@ -1,10 +1,13 @@
-const fs = require('fs');
-const path = require('path');
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-const getImageFormat = require('../lib/getImageFormat');
+import getImageFormat from '../lib/getImageFormat.js';
+
+const dirname = path.dirname(fileURLToPath(import.meta.url));
 
 function readFile(filePath) {
-  return fs.readFileSync(path.resolve(__dirname, filePath));
+  return fs.readFileSync(path.resolve(dirname, filePath));
 }
 
 const gifBuffer = readFile('images/gif-not-optimized.gif');

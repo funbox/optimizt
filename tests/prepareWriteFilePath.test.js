@@ -1,8 +1,11 @@
-const fs = require('fs');
-const os = require('os');
-const path = require('path');
+import fs from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-const prepareWriteFilePath = require('../lib/prepareWriteFilePath');
+import prepareWriteFilePath from '../lib/prepareWriteFilePath.js';
+
+const dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const imageName = 'jpeg-one-pixel.jpg';
 const outputDir = fs.mkdtempSync(path.join(os.tmpdir(), 'optimizt-test-'));
@@ -12,7 +15,7 @@ afterAll(() => {
 });
 
 test('Write path does not change', () => {
-  const filePath = path.resolve(__dirname, 'images', imageName);
+  const filePath = path.resolve(dirname, 'images', imageName);
 
   expect(prepareWriteFilePath(filePath)).toBe(filePath);
 });

@@ -1,4 +1,4 @@
-const colorize = require('../lib/colorize');
+import colorize from '../lib/colorize.js';
 
 const isTTY = Boolean(process.stdout.isTTY);
 

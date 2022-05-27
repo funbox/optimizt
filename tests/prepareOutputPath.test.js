@@ -1,6 +1,12 @@
-const path = require('path');
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-const prepareOutputPath = require('../lib/prepareOutputPath');
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { jest } from '@jest/globals';
+
+import prepareOutputPath from '../lib/prepareOutputPath.js';
+
+const dirname = path.dirname(fileURLToPath(import.meta.url));
 
 test('Exit if the path does not exist', () => {
   const processExitMock = jest.spyOn(process, 'exit').mockImplementation(exitCode => {
@@ -24,7 +30,7 @@ test('Exit if specified path to file instead of directory', () => {
 
   console.log = jest.fn();
 
-  expect(() => prepareOutputPath(path.resolve(__dirname, 'images', 'svg-not-optimized.svg'))).toThrow();
+  expect(() => prepareOutputPath(path.resolve(dirname, 'images', 'svg-not-optimized.svg'))).toThrow();
   expect(processExitMock).toHaveBeenCalledWith(1);
   expect(console.log.mock.calls[0][1]).toBe('Output path must be a directory');
 
@@ -33,5 +39,5 @@ test('Exit if specified path to file instead of directory', () => {
 });
 
 test('Full path is generated', () => {
-  expect(prepareOutputPath('tests/images')).toBe(path.resolve(__dirname, 'images'));
+  expect(prepareOutputPath('tests/images')).toBe(path.resolve(dirname, 'images'));
 });

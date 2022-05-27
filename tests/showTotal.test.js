@@ -1,4 +1,7 @@
-const showTotal = require('../lib/showTotal');
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { jest } from '@jest/globals';
+
+import showTotal from '../lib/showTotal.js';
 
 test('Savings size and compression ratio are displayed', () => {
   const fileSize = 1048576;

@@ -1,6 +1,6 @@
 {
   "name": "@funboxteam/optimizt",
-  "version": "3.1.2",
+  "version": "4.0.0",
   "description": "CLI image optimization tool",
   "license": "MIT",
   "author": "Andrey Ivanov (https://github.com/343dev)",
@@ -8,7 +8,7 @@
     "type": "git",
     "url": "https://github.com/funbox/optimizt"
   },
-  "main": "index.js",
+  "exports": "./index.js",
   "bin": {
     "optimizt": "./cli.js"
   },
@@ -20,32 +20,36 @@
     "svgo/"
   ],
   "scripts": {
-    "lint-src": "eslint --config .eslintrc.js --ignore-pattern 'tests/*' ./",
-    "lint-tests": "eslint --config tests/.eslintrc.js tests/",
+    "lint-src": "eslint --config .eslintrc.cjs --ignore-pattern 'tests/*' ./",
+    "lint-tests": "eslint --config tests/.eslintrc.cjs tests/",
     "lint": "npm run lint-src && npm run lint-tests",
     "prepublishOnly": "lawyer",
-    "test": "jest tests",
+    "test": "NODE_OPTIONS=--experimental-vm-modules jest tests",
     "update-git-hooks": "npx simple-git-hooks"
   },
+  "type": "module",
+  "engines": {
+    "node": ">=14.14"
+  },
   "dependencies": {
-    "cli-progress": "^3.10.0",
-    "commander": "^8.3.0",
+    "cli-progress": "^3.11.0",
+    "commander": "^9.2.0",
     "exec-buffer": "^3.2.0",
     "fast-glob": "^3.2.11",
-    "gif2webp-bin": "^3.0.3",
-    "gifsicle": "^5.3.0",
-    "guetzli": "^3.0.2",
-    "jpegoptim-bin": "^6.0.1",
-    "p-limit": "^3.1.0",
-    "sharp": "^0.29.3",
+    "gif2webp-bin": "^5.0.0",
+    "gifsicle": "^7.0.0",
+    "guetzli": "https://github.com/funbox/guetzli-bin/tarball/main",
+    "p-limit": "^4.0.0",
+    "sharp": "^0.30.4",
     "svgo": "2.6.1"
   },
   "devDependencies": {
+    "@babel/eslint-parser": "^7.17.0",
     "@funboxteam/eslint-config": "^7.1.0",
     "eslint": "^7.32.0",
-    "eslint-plugin-jest": "^26.1.4",
-    "jest": "^27.5.1",
-    "lint-staged": "^12.3.1",
+    "eslint-plugin-jest": "^26.2.2",
+    "jest": "^28.1.0",
+    "lint-staged": "^12.4.1",
     "simple-git-hooks": "^2.7.0"
   },
   "simple-git-hooks": {
@@ -53,13 +57,13 @@
   },
   "lint-staged": {
     "!(tests)/**/*.js": [
-      "eslint --fix --config .eslintrc.js"
+      "eslint --fix --config .eslintrc.cjs"
     ],
     "./*.js": [
-      "eslint --fix --config .eslintrc.js"
+      "eslint --fix --config .eslintrc.cjs"
     ],
     "tests/**/*.js": [
-      "eslint --fix --config tests/.eslintrc.js"
+      "eslint --fix --config tests/.eslintrc.cjs"
     ]
   }
 }

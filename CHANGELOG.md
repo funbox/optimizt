@@ -1,5 +1,12 @@
 # Changelog
 
+## 4.0.0 (27.05.2022)
+
+This package is now pure ESM.
+
+JPEG files now processed via sharp module.
+
+
 ## 3.1.2 (06.05.2022)
 
 Fixed total saved size calculation.

@@ -1,5 +1,8 @@
-const colorize = require('../lib/colorize');
-const { enableVerbose, log } = require('../lib/log');
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { jest } from '@jest/globals';
+
+import colorize from '../lib/colorize.js';
+import log, { enableVerbose } from '../lib/log.js';
 
 const colors = {
   info: 'blue',

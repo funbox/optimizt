@@ -1,6 +1,6 @@
-const removeUnknownsAndDefaults = require('./removeUnknownsAndDefaults');
+import removeUnknownsAndDefaults from './removeUnknownsAndDefaults.cjs';
 
-module.exports = {
+export default {
   multipass: true,
   js2svg: {
     pretty: true,

@@ -1,11 +1,15 @@
-const fs = require('fs');
-const path = require('path');
-const sharp = require('sharp');
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-const setSrgbColorspace = require('../lib/setSrgbColorspace');
+import sharp from 'sharp';
 
-const bwImageBuffer = fs.readFileSync(path.resolve(__dirname, 'images', 'jpeg-one-pixel.jpg'));
-const srgbImageBuffer = fs.readFileSync(path.resolve(__dirname, 'images', 'jpeg-low-quality.jpg'));
+import setSrgbColorspace from '../lib/setSrgbColorspace.js';
+
+const dirname = path.dirname(fileURLToPath(import.meta.url));
+
+const bwImageBuffer = fs.readFileSync(path.resolve(dirname, 'images', 'jpeg-one-pixel.jpg'));
+const srgbImageBuffer = fs.readFileSync(path.resolve(dirname, 'images', 'jpeg-low-quality.jpg'));
 
 test('Output colorspace always sRGB', async () => {
   await expect(getColorspace(bwImageBuffer)).resolves.toBe('b-w');

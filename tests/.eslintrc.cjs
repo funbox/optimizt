@@ -5,4 +5,7 @@ module.exports = {
     node: true,
     'jest/globals': true,
   },
+  rules: {
+    'import/extensions': [2, 'always'],
+  },
 };
