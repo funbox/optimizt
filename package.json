@@ -23,7 +23,7 @@
     "lint-src": "eslint --config .eslintrc.cjs --ignore-pattern 'tests/*' ./",
     "lint-tests": "eslint --config tests/.eslintrc.cjs tests/",
     "lint": "npm run lint-src && npm run lint-tests",
-    "prepublishOnly": "lawyer",
+    "prepublishOnly": "if [ -z \"$CI\" ]; then lawyer; fi",
     "test": "NODE_OPTIONS=--experimental-vm-modules jest tests",
     "update-git-hooks": "npx simple-git-hooks"
   },
