@@ -17,6 +17,7 @@ program
   .option('--force', 'force create AVIF and WebP')
   .option('-l, --lossless', 'perform lossless optimizations (WebP and AVIF only)')
   .option('-v, --verbose', 'be verbose')
+  .option('-c, --config <path>', 'use this configuration, overriding default config options if present')
   .option('-o, --output <path>', 'write output to directory');
 
 program
