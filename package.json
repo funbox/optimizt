@@ -3,7 +3,7 @@
   "version": "4.0.0",
   "description": "CLI image optimization tool",
   "license": "MIT",
-  "author": "Andrey Ivanov (https://github.com/343dev)",
+  "author": "Andrey Warkentin (https://github.com/343dev)",
   "repository": {
     "type": "git",
     "url": "https://github.com/funbox/optimizt"
