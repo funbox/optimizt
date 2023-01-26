@@ -36,9 +36,10 @@ optimizt path/to/picture.jpg
 
 - `--avif` — create AVIF versions for the passed paths instead of compressing them.
 - `--webp` — create WebP versions for the passed paths instead of compressing them.
-- `--force` — force create AVIF and WebP even if output file size increased or file already exists.
+- `-f, --force` — force create AVIF and WebP even if output file size increased or file already exists.
 - `-l, --lossless` — optimize losslessly instead of lossily (WebP and AVIF only).
 - `-v, --verbose` — show additional info, e.g. skipped files.
+- `-c, --config` — use this configuration, overriding default config options if present.
 - `-o, --output` — write result to provided directory.
 - `-V, --version` — show tool version.
 - `-h, --help` — show help.
@@ -62,58 +63,47 @@ optimizt --webp path/to/directory
 find . -iname \*.jpg -exec optimizt {} +
 ```
 
-## Differences between “lossy” and “lossless”
+## Differences between Lossy and Lossless
 
-### JPEG
+### Lossy (by default)
 
-#### Lossy
+Allows you to obtain the final image with a balance between a high level of compression and a minimum level
+of visual distortion.
 
-[sharp](https://github.com/lovell/sharp) with [parameters](https://sharp.pixelplumbing.com/api-output#jpeg): 
-`progressive: true`.
+### Lossless (--lossless flag)
 
-#### Lossless
+When creating AVIF and WebP versions, optimizations are applied that do not affect the visual quality of the images.
 
-[Guetzli](https://github.com/google/guetzli) with `--quality 90` flag.
+PNG, JPEG, and GIF optimization uses settings that maximize the visual quality of the image at the expense of
+the final file size.
 
-Guetzli aims for excellent compression density at high visual quality.
+When processing SVG files, the settings for Lossy and Lossless modes are identical.
 
-Keep in mind that if you reoptimize the same file in lossless mode, the file size may decrease, but the visual quality
-will also degrade.
+## Configuration
 
-### PNG
+[JPEG](https://sharp.pixelplumbing.com/api-output#jpeg), [PNG](https://sharp.pixelplumbing.com/api-output#png),
+[WebP](https://sharp.pixelplumbing.com/api-output#webp), and [AVIF](https://sharp.pixelplumbing.com/api-output#avif)
+processing is done using [sharp](https://github.com/lovell/sharp) library, while SVG is processed using
+[svgo](https://github.com/svg/svgo) utility.
 
-[sharp](https://github.com/lovell/sharp) with [parameters](https://sharp.pixelplumbing.com/api-output#png):
+For optimizing GIFs, [gifsicle](https://github.com/kohler/gifsicle) is used, and for converting to WebP,
+[gif2webp](https://developers.google.com/speed/webp/docs/gif2webp) is used.
 
-- **lossy**: `compressionLevel: 9`, `adaptiveFiltering: false`, `palette: true`
-- **lossless**: `compressionLevel: 9`, `adaptiveFiltering: true`, `palette: false`
+> 💡 Lossless mode uses [Guetzli](https://github.com/google/guetzli) encoder to optimize JPEG, which allows to get
+> a high level of compression and still have a good visual quality. But you should keep in mind that if you optimize
+> the file again, the size may decrease at the expense of degrading the visual quality of the image.
 
-### GIF
+The default settings are located in [.optimiztrc.js](./.optimiztrc.js), the file contains a list of supported parameters
+and their brief description.
 
-[gifsicle](https://github.com/kohler/gifsicle) with flags:
+To disable any of the parameters, you should use `false` for the value.
 
-- **lossy**: `-O3`, `--lossy=100`
-- **lossless**: no flags
+When running with the `--config path/to/.optimiztrc.js` flag, the settings from the specified configuration file will
+be used for image processing.
 
-### WebP
-
-[sharp](https://github.com/lovell/sharp) with [parameters](https://sharp.pixelplumbing.com/api-output#webp):
-
-- **lossy**: `quality: 85`, `lossless: false`
-- **lossless**: `quality: 85`, `lossless: true`
-
-### WebP (GIF)
-
-[gif2webp](https://developers.google.com/speed/webp/docs/gif2webp) with flags:
-
-- **lossy**: `-lossy`, `-min_size`
-- **lossless**: no flags
-
-### AVIF
-
-[sharp](https://github.com/lovell/sharp) with [parameters](https://sharp.pixelplumbing.com/api-output#avif):
-
-- **lossy**: `lossless: false`
-- **lossless**: `lossless: true`
+When running normally, without the `--config` flag, a recursive search for the `.optimiztrc.js` file will be performed
+starting from the current directory and up to the root of the file system. If the file is not found, the default
+settings will be applied.
 
 ## Integrations
 
