@@ -1,10 +1,15 @@
+import checkConfigPath from './lib/checkConfigPath.js';
 import convert from './lib/convert.js';
+import findConfig from './lib/findConfig.js';
 import { enableVerbose } from './lib/log.js';
 import optimize from './lib/optimize.js';
 import prepareFilePaths from './lib/prepareFilePaths.js';
 import prepareOutputPath from './lib/prepareOutputPath.js';
 
-export default async function optimizt({ paths, avif, webp, force, lossless, verbose, output }) {
+export default async function optimizt({ paths, avif, webp, force, lossless, verbose, output, config }) {
+  const configFilepath = config ? checkConfigPath(config) : findConfig();
+  const configData = await import(configFilepath);
+
   if (verbose) enableVerbose();
 
   if (avif || webp) {
@@ -15,12 +20,14 @@ export default async function optimizt({ paths, avif, webp, force, lossless, ver
       webp,
       force,
       output: prepareOutputPath(output),
+      config: configData.default.convert,
     });
   } else {
     await optimize({
       paths: prepareFilePaths(paths, ['gif', 'jpeg', 'jpg', 'png', 'svg']),
       lossless,
       output: prepareOutputPath(output),
+      config: configData.default.optimize,
     });
   }
 }

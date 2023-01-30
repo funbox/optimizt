@@ -484,9 +484,11 @@ CLI image optimization tool
 Options:
   --avif               create AVIF and exit
   --webp               create WebP and exit
-  --force              force create AVIF and WebP
-  -l, --lossless       perform lossless optimizations (WebP and AVIF only)
+  -f, --force          force create AVIF and WebP
+  -l, --lossless       perform lossless optimizations
   -v, --verbose        be verbose
+  -c, --config <path>  use this configuration, overriding default config
+                       options if present
   -o, --output <path>  write output to directory
   -V, --version        output the version number
   -h, --help           display help for command

@@ -1,10 +1,17 @@
 # Changelog
 
+## 4.1.0 (27.01.2023)
+
+Added `--config` flag, which allows specifying path to file with custom settings. 
+
+See more in README.
+
+
 ## 4.0.0 (27.05.2022)
 
 This package is now pure ESM.
 
-JPEG files now processed via sharp module.
+In lossy mode, JPEG files are now processed by sharp module.
 
 
 ## 3.1.2 (06.05.2022)
