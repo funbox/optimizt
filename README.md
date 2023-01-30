@@ -37,7 +37,7 @@ optimizt path/to/picture.jpg
 - `--avif` — create AVIF versions for the passed paths instead of compressing them.
 - `--webp` — create WebP versions for the passed paths instead of compressing them.
 - `-f, --force` — force create AVIF and WebP even if output file size increased or file already exists.
-- `-l, --lossless` — optimize losslessly instead of lossily (WebP and AVIF only).
+- `-l, --lossless` — optimize losslessly instead of lossily.
 - `-v, --verbose` — show additional info, e.g. skipped files.
 - `-c, --config` — use this configuration, overriding default config options if present.
 - `-o, --output` — write result to provided directory.
@@ -436,9 +436,21 @@ brew install pkg-config libpng
 
 ## Docker
 
+### Pull by name
+
+```bash
+docker pull 343dev/optimizt
+```
+
+### Pull by name and version
+
+```bash
+docker pull 343dev/optimizt:4.1.0
+```
+
 ### Build the image
 
-If you want to build the Docker image, you need to:
+If you want to manually build the Docker image, you need to:
 
 1. Clone this repo and cd into it.
 2. Run `docker build -t funbox/optimizt .`.
@@ -455,7 +467,7 @@ Inside the container WORKDIR is set to `/src`, so by default all paths will be r
 Usage example:
 
 ```bash
-docker run -v $(pwd):/src optimizt --webp image.png
+docker run -v $(pwd):/src funbox/optimizt --webp image.png
 ```
 
 ## Credits
