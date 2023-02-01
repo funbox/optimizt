@@ -443,9 +443,21 @@ brew install pkg-config libpng
 
 ## Docker
 
+### Pull по названию
+
+```bash
+docker pull 343dev/optimizt
+```
+
+### Pull по названию и версии
+
+```bash
+docker pull 343dev/optimizt:4.1.0
+```
+
 ### Сборка образа
 
-Для того чтобы собрать Докер образ, нужно:
+Для того чтобы самостоятельно собрать Докер образ, нужно:
 
 1. Клонировать этот репозиторий и перейти в него.
 2. Выполнить `docker build -t funbox/optimizt .`.
@@ -462,7 +474,7 @@ brew install pkg-config libpng
 Пример использования:
 
 ```bash
-docker run -v $(pwd):/src optimizt --webp image.png
+docker run -v $(pwd):/src funbox/optimizt --webp image.png
 ```
 
 ## Благодарности
