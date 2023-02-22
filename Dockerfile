@@ -14,7 +14,7 @@ RUN apt update \
   && npm cache clean --force \
   && apt purge --yes build-essential pkg-config libpng-dev libjpeg62-turbo-dev dh-autoreconf \
   && apt autoremove --yes --purge \
-  && rm -rf /var/lib/apt/lists/* /usr/share/doc /usr/share/man /app/guetzli-5.0.0.tgz
+  && rm -rf /var/lib/apt/lists/* /usr/share/doc /usr/share/man
 
 WORKDIR /src
 
