@@ -38,7 +38,7 @@
     "fast-glob": "^3.2.11",
     "gif2webp-bin": "^5.0.0",
     "gifsicle": "^7.0.0",
-    "guetzli": "file:guetzli-5.0.0.tgz",
+    "guetzli": "https://github.com/funbox/guetzli-bin/tarball/main",
     "p-limit": "^4.0.0",
     "sharp": "^0.30.4",
     "svgo": "2.6.1"
