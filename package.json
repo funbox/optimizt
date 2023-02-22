@@ -17,7 +17,8 @@
     "cli.js",
     "index.js",
     "lib/",
-    "svgo/"
+    "svgo/",
+    ".optimiztrc.js"
   ],
   "scripts": {
     "lint-src": "eslint --config .eslintrc.cjs --ignore-pattern 'tests/*' ./",
