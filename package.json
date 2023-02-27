@@ -1,6 +1,6 @@
 {
   "name": "@funboxteam/optimizt",
-  "version": "4.1.0",
+  "version": "4.1.1",
   "description": "CLI image optimization tool",
   "license": "MIT",
   "author": "Andrey Warkentin (https://github.com/343dev)",
@@ -17,7 +17,8 @@
     "cli.js",
     "index.js",
     "lib/",
-    "svgo/"
+    "svgo/",
+    ".optimiztrc.js"
   ],
   "scripts": {
     "lint-src": "eslint --config .eslintrc.cjs --ignore-pattern 'tests/*' ./",
@@ -38,7 +39,7 @@
     "fast-glob": "^3.2.11",
     "gif2webp-bin": "^5.0.0",
     "gifsicle": "^7.0.0",
-    "guetzli": "file:guetzli-5.0.0.tgz",
+    "guetzli": "https://github.com/funbox/guetzli-bin/tarball/main",
     "p-limit": "^4.0.0",
     "sharp": "^0.30.4",
     "svgo": "2.6.1"
