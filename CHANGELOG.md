@@ -1,5 +1,10 @@
 # Changelog
 
+## 4.1.1 (27.02.2023)
+
+Fixed installation and included the configuration file to the package. 
+
+
 ## 4.1.0 (27.01.2023)
 
 Added `--config` flag, which allows specifying path to file with custom settings. 
