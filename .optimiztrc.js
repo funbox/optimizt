@@ -1,5 +1,3 @@
-import removeUnknownsAndDefaults from './svgo/removeUnknownsAndDefaults.cjs';
-
 export default {
   optimize: {
     jpeg: {
@@ -75,11 +73,7 @@ export default {
           We want to remove useless parts of SVG, but to leave `stroke="none"`.
           For this purpose we use here a custom version of `removeUnknownsAndDefaults`.
          */
-        {
-          name: 'removeUnknownsAndDefaults',
-          ...removeUnknownsAndDefaults,
-        },
-
+        'removeUnknownsAndDefaultsPATCHED',
         'cleanupAttrs',
         'mergeStyles',
         'inlineStyles',
