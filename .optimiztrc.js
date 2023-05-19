@@ -114,7 +114,6 @@ export default {
         'convertEllipseToCircle',
         'sortAttrs',
         'sortDefsChildren',
-        'removeOffCanvasPaths',
         'reusePaths',
       ],
     },
