@@ -1,5 +1,14 @@
 # Changelog
 
+## 5.0.0 (19.05.2023)
+
+Removed `removeOffCanvasPaths` plugin from SVGO config due to known bugs: [svg/svgo#1732](https://github.com/svg/svgo/issues/1732), [svg/svgo#1646](https://github.com/svg/svgo/issues/1646).
+
+Removed import of `removeUnknownsAndDefaults` plugin from the default config to make it easy to redefine the config on the user side.
+
+Check out [migration guide](./MIGRATION.md).
+
+
 ## 4.1.1 (27.02.2023)
 
 Fixed installation and included the configuration file to the package. 
