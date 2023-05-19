@@ -1,5 +1,14 @@
 # Migration
 
+## 4.1.1 → 5.0.0
+
+First, `removeOffCanvasPaths` SVGO plugin has been removed, so make sure that all your SVG files are optimized correctly by Optimizt v5. 
+It's possible that you encounter structure changes in the SVGs code, but there should not be any visual changes.
+
+Last, if you were using your own config file and monkey-patched import of `removeUnknownsAndDefaults` plugin, now you should not do it.
+Instead use string literal `'removeUnknownsAndDefaultsPATCHED'` in `optimize.svg.plugin` array of the config. Check out the default config to make sure that you're doing everything right.
+
+
 ## 3.1.2 → 4.0.0
 
 Drop Node.js v12 support.
