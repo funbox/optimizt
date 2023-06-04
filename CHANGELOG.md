@@ -1,5 +1,10 @@
 # Changelog
 
+## 5.0.1 (04.06.2023)
+
+Fixed an [issue](https://github.com/funbox/optimizt/issues/63) with an incorrect path to the configuration file on Windows systems.
+
+
 ## 5.0.0 (19.05.2023)
 
 Removed `removeOffCanvasPaths` plugin from SVGO config due to known bugs: [svg/svgo#1732](https://github.com/svg/svgo/issues/1732), [svg/svgo#1646](https://github.com/svg/svgo/issues/1646).
