@@ -1,4 +1,4 @@
-FROM node:14.18.0-stretch-slim
+FROM node:14.18.0-buster-slim
 LABEL maintainer="Andrey Warkentin (https://github.com/343dev)"
 
 WORKDIR /app
