@@ -54,7 +54,7 @@ jobs:
       - uses: actions/setup-node@v2
         if: env.IMAGES_PATHS != '' || env.IMAGES_PATHS_AVIF != ''
         with:
-          node-version: '14'
+          node-version: '18'
 
       - name: Install Optimizt via npm
         if: env.IMAGES_PATHS != '' || env.IMAGES_PATHS_AVIF != ''
