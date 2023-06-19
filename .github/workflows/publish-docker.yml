@@ -15,7 +15,7 @@ defaults:
 jobs:
   docker:
     runs-on: ubuntu-latest
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    # if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
       - name: Check-out repo
         uses: actions/checkout@v3
@@ -42,8 +42,8 @@ jobs:
           build-args: |
             OPTIMIZT_VERSION=${{ env.OPTIMIZT_VERSION }}
             BUILD_DATE=${{ env.BUILD_DATE }}
-  fail:
-    runs-on: ubuntu-latest
-    if: ${{ github.event.workflow_run.conclusion == 'failure' }}
-    steps:
-      - run: echo "Publish workflow failed"
+  # fail:
+  #   runs-on: ubuntu-latest
+  #   if: ${{ github.event.workflow_run.conclusion == 'failure' }}
+  #  steps:
+  #    - run: echo "Publish workflow failed"
