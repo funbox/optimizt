@@ -32,6 +32,7 @@ jobs:
       - name: Define variables
         run: |
           echo "OPTIMIZT_VERSION=$(grep -m1 version ./package.json | sed 's/[", ]//g' | cut -d ":" -f 2)" >> $GITHUB_ENV
+          echo "BUILD_DATE=$(date -u +'%Y-%m-%dT%H:%M:%SZ')" >> $GITHUB_ENV
 
       - name: Build and push
         uses: docker/build-push-action@v4
@@ -40,6 +41,7 @@ jobs:
           tags: funbox/optimizt:latest,funbox/optimizt:${{ env.OPTIMIZT_VERSION }}
           build-args: |
             OPTIMIZT_VERSION=${{ env.OPTIMIZT_VERSION }}
+            BUILD_DATE=${{ env.BUILD_DATE }}
   fail:
     runs-on: ubuntu-latest
     if: ${{ github.event.workflow_run.conclusion == 'failure' }}
