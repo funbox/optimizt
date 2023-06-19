@@ -446,13 +446,13 @@ brew install pkg-config libpng
 ### Pull по названию
 
 ```bash
-docker pull 343dev/optimizt
+docker pull funbox/optimizt
 ```
 
 ### Pull по названию и версии
 
 ```bash
-docker pull 343dev/optimizt:4.1.0
+docker pull funbox/optimizt:5.0.1
 ```
 
 ### Сборка образа

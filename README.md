@@ -439,20 +439,20 @@ brew install pkg-config libpng
 ### Pull by name
 
 ```bash
-docker pull 343dev/optimizt
+docker pull funbox/optimizt
 ```
 
 ### Pull by name and version
 
 ```bash
-docker pull 343dev/optimizt:4.1.0
+docker pull funbox/optimizt:5.0.1
 ```
 
 ### Build the image
 
 If you want to manually build the Docker image, you need to:
 
-1. Clone this repo and cd into it.
+1. Clone this repo and `cd` into it.
 2. Run `docker build -t funbox/optimizt .`.
 
 OR:
