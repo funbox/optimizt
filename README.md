@@ -1,3 +1,7 @@
+# ⛔ THIS REPO IS UNMAINTAINED
+
+Future development moved to <https://github.com/343dev/optimizt>.
+
 # @funboxteam/optimizt
 
 <img align="right" width="192" height="192"
@@ -370,7 +374,7 @@ on:
     paths:
       - "**.jpe?g"
       - "**.png"
-  
+
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
